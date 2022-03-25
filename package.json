@@ -1,0 +1,20 @@
+{
+  "name": "fe21-js2-slutprojekt-gritverse",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --dist-dir docs --public-url ./",
+    "clean": "del-cli ./.parcel-cache ./docs ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del-cli": "^4.0.1",
+    "parcel": "^2.4.0"
+  },
+  "dependencies": {
+    "firebase": "^9.6.10"
+  }
+}
