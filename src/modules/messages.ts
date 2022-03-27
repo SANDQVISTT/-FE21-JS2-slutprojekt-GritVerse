@@ -1,58 +1,56 @@
 import { get, ref, remove, child, DataSnapshot } from "firebase/database";
 import { db } from "./firebaseApp";
 //OBS: REWORK IN PROGRESS, EYES TIRED
+
 export class Messages
 {
-    id: string;
-    msg: string;
     constructor(
-        public readonly commentId: string,
-        public readonly userId:string,
-        public readonly userMsg:string,
-        public readonly timeStamp:string
+    public readonly id: string,
+    public readonly userName: string,
+    public readonly message: string,
+    public readonly timeStamp:string
     )
     {
-       this.printUserInfo(); 
+        this.displayMsg();
     }
-    public printUserInfo()
+    private displayMsg():void
     {
-        const userName:HTMLParagraphElement = document.createElement("p");
-        userName.id = this.commentId;
-        userName.innerText = this.timeStamp + `User name ${this.userId}, Message: ${this.userMsg}`;
+        //The section containing all messages (section for each topic?)
+        const msgWrapper = document.getElementById("messages");
+        //The Div containing one message
+        const msgContainer = document.createElement("div") as HTMLDivElement;
+        msgWrapper.append(msgContainer);
+        //Set the messages ID to the div containing the message
+        msgContainer.id = this.id;
         
-        const removeBtn: HTMLButtonElement = document.createElement("button");
-        removeBtn.setAttribute("value", this.commentId);
+        //Create the userName h4 element
+        const userNameElement = document.createElement("h4") as HTMLHeadElement;
+        //Set the userName and the timeStamp
+        userNameElement.innerText = this.timeStamp + `User name ${this.id}`;
+        msgContainer.append(userNameElement);
+        
+        //Create the remove button
+        const removeBtn = document.createElement("button") as HTMLButtonElement;
         removeBtn.innerText = "X";
-        removeBtn.addEventListener("click", (e) =>
-        {
-            const test = <HTMLInputElement>document.getElementById("userNameInput");  //UNUSED ID
-            
-            get(child(ref(db), `userInfo/${this.commentId}`)).then(
-                (snapshot: DataSnapshot):void =>
-                {
-                    if(snapshot.exists())
-                    {
-                        if (test.value == snapshot.val().userId)
-                        {
-                            const taskRef = ref(db, "/userInfo/" + this.commentId);
-                            remove(taskRef);
-                        }
-                    }
-                }
-            );
-        });
-        const userInfo = <HTMLInputElement>document.getElementById("comment-Input");  //UNUSED ID, IN TESTING
-        userInfo.append(removeBtn);
+        msgWrapper.append(removeBtn);
         
-        const userDiv = <HTMLDivElement>document.getElementById("db-comments"); //UNUSED ID, IN TESTING
-        userDiv.appendChild(userName);
-    }
-    public removeMessage():void
+        //Removebuttons event
+        removeBtn.addEventListener("click", () =>
+        {
+            const userName = document.getElementById("userNameInput") as HTMLInputElement;
+            
+            if (this.userName == userName.value)
+            {
+                //Set the reference in the database
+                //TODO: change topics later
+                const msgRef = ref(db, "/Topics/Games/" + this.id);
+                remove(msgRef);
+                
+            }
+        });
+    };
+    public clearDOM():void
     {
-        document.querySelector(`#${this.commentId}`).remove();
-    }
-    public removeDomeElement():void
-    {
-        document.querySelector(`#${this.id}`).remove();
+        document.querySelector(`${this.id}`).remove();
     }
 }
