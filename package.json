@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html --dist-dir docs --public-url ./",
+    "build": "parcel build ./src/index.html --dist-dir docs --public-url ./ ",
     "clean": "del-cli ./.parcel-cache ./docs ./dist"
   },
   "keywords": [],
@@ -12,7 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "del-cli": "^4.0.1",
-    "parcel": "^2.4.0"
+    "parcel": "^2.4.0",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "firebase": "^9.6.10"
