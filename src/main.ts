@@ -10,6 +10,7 @@ import {
   getDatabase,
 } from "firebase/database";
 import { db } from "./modules/firebaseApp";
+import { Profile } from "./modules/profile";
 
 const dbRef = ref(db, "/users/userInfo/");
 
