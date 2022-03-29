@@ -5,12 +5,13 @@
     border: 0;
     outline: 0;
 }
+body
+{
+    background-color: hotpink;
+}
 header{
     padding: 2rem;
     text-align: center;
-    
-
-
 }
 
 ul {
@@ -54,7 +55,4 @@ ul {
 #ProfileInfo{
   text-align: center;
   justify-content: center;
-
-
 }
-  
