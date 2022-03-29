@@ -1,4 +1,4 @@
-import { DisplayToDom } from "./modules/display";
+// import { DisplayToDom } from "./modules/display";
 import { onValue, ref, update, push, remove } from "firebase/database";
 import { db } from "./modules/firebaseApp";
 import { Messages } from "./modules/messages";
@@ -6,10 +6,9 @@ import { Messages } from "./modules/messages";
 const dbRef = ref (db, "/Topics/Games/");
 let messages:Messages[] = [];
 
-onValue(dbRef, snapshot =>
+onValue(dbRef, (snapshot) =>
     {
         const messageData = snapshot.val();
-        
         for(const message of messages)
         {
             message.clearDOM();
@@ -41,7 +40,10 @@ onValue(dbRef, snapshot =>
                 }
             }
         }
+       if (messageData)
+       {
         postLimiter();
+       }
     });
     
     document.getElementById("send").addEventListener("click", (e) =>
@@ -68,7 +70,4 @@ function scrollDown():void
     const e = document.getElementById("messages");
     e.scrollTop = e.scrollHeight;
 };
-
-new DisplayToDom().createElements();
-
-console.log("hello world");
+// new DisplayToDom().createElements();

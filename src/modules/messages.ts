@@ -1,6 +1,5 @@
 import { get, ref, remove, child, DataSnapshot } from "firebase/database";
 import { db } from "./firebaseApp";
-//OBS: REWORK IN PROGRESS, EYES TIRED
 
 export class Messages
 {
@@ -13,6 +12,7 @@ export class Messages
     {
         this.displayMsg();
     }
+    
     private displayMsg():void
     {
         //The section containing all messages (section for each topic?)
@@ -21,23 +21,38 @@ export class Messages
         const msgContainer = document.createElement("div") as HTMLDivElement;
         msgWrapper.append(msgContainer);
         //Set the messages ID to the div containing the message
-        msgContainer.id = this.id;
+        // msgContainer.id = this.id;
+        msgContainer.classList.add(this.id);
         
         //Create the userName h4 element
         const userNameElement = document.createElement("h4") as HTMLHeadElement;
         //Set the userName and the timeStamp
-        userNameElement.innerText = this.timeStamp + `User name ${this.id}`;
+        userNameElement.innerText = `${this.timeStamp}, ${this.userName}, ${this.message}`;
         msgContainer.append(userNameElement);
         
+        // const date = new Date();
+
+        // timeStamp:
+        // date.getFullYear() +
+        // " " +
+        // (date.getMonth() + 1) +
+        // "/" +
+        // date.getUTCDate() +
+        // " - " +
+        // date.getHours() +
+        // ":" +
+        // date.getMinutes() +
+        // ":";
+
         //Create the remove button
         const removeBtn = document.createElement("button") as HTMLButtonElement;
         removeBtn.innerText = "X";
-        msgWrapper.append(removeBtn);
+        msgContainer.append(removeBtn);
         
         //Removebuttons event
         removeBtn.addEventListener("click", () =>
         {
-            const userName = document.getElementById("userNameInput") as HTMLInputElement;
+            const userName = document.getElementById("userName") as HTMLInputElement;
             
             if (this.userName == userName.value)
             {
@@ -45,12 +60,11 @@ export class Messages
                 //TODO: change topics later
                 const msgRef = ref(db, "/Topics/Games/" + this.id);
                 remove(msgRef);
-                
             }
         });
     };
     public clearDOM():void
     {
-        document.querySelector(`${this.id}`).remove();
+        document.querySelector(`.${this.id}`).remove();
     }
 }
