@@ -4,8 +4,6 @@ import { getDatabase, set, ref } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyCTRAdceoTbtvNIW6CjcnSDwqsovjuM9aY",
   authDomain: "gritverse-15493.firebaseapp.com",
-  databaseURL:
-    "https://gritverse-15493-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "gritverse-15493",
   databaseURL: "https://gritverse-15493-default-rtdb.europe-west1.firebasedatabase.app/",
   storageBucket: "gritverse-15493.appspot.com",
