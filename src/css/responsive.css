@@ -1,0 +1,56 @@
+@media screen and (max-width: 600px)
+{
+    nav ul
+    {
+        height: 4rem;
+    }
+    nav a
+    {
+        font-size: 20px;
+    }
+    #form-title-container
+    {
+        width:60%;
+    }
+    input
+    {
+        height: 40px;
+    }
+    button
+    {
+        height: 40px;
+    }
+    /* Chat Layout */
+    #messagesMusic
+    {
+        font-size: 9px;
+    }
+}
+@media screen and (max-width: 768px)
+{
+    nav ul
+    {
+        height: 3rem;
+    }
+    nav a
+    {
+        font-size: 16px;
+    }
+    #form-title-container
+    {
+        width:40%;
+    }
+    input
+    {
+        height: 30px;
+    }
+    button
+    {
+        height: 30px;
+    }
+    /* Chat Layout */
+    #messagesMusic
+    {
+        font-size: 11px;
+    }
+}
