@@ -15,7 +15,7 @@ export class Messages
     private displayMsg():void
     {
         //The section containing all messages (section for each topic?)
-        const msgWrapper = document.getElementById("messages");
+        const msgWrapper = document.getElementById("messagesGames");
         //The Div containing one message
         const msgContainer = document.createElement("div") as HTMLDivElement;
         msgWrapper.append(msgContainer);
