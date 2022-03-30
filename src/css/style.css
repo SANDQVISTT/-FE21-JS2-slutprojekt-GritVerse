@@ -25,9 +25,6 @@ li a {
 li a:hover {
   background-color: #111;
 }
-li a:hover {
-  background-color: #111;
-}
 body {
   background-color: #e4eff2;
 }
@@ -53,7 +50,7 @@ input {
   margin: 3px;
   box-shadow: 1px 1.4px 2px #8fa0a6;
 }
-button textarea {
+textarea {
   background-color: #c7c7c7;
 }
 button {
@@ -67,25 +64,14 @@ header {
   padding: 2rem;
   text-align: center;
 }
-ul {
-  top: 0;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-li {
-  float: left;
-}
-li a {
-  display: block;
+footer {
+  background-color: rgb(51, 51, 51);
   color: white;
+  border-top: 2px solid #8fa0a6;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-
 li a:hover {
   background-color: #111;
 }
@@ -93,7 +79,6 @@ li a:hover {
   text-align: center;
   justify-content: center;
 }
-
 #register {
   color: white;
 }
