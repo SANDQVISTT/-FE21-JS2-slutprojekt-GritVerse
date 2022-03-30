@@ -99,3 +99,6 @@ document
   });
 /* let users: UserSign[] = [];
  */
+    sessionStorage.setItem("name",`${username.value}`);
+  });
+});
