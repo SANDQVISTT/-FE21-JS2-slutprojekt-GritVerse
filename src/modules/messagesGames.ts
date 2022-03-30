@@ -4,7 +4,8 @@ import { db } from "./firebaseApp";
 export class Messages {
   constructor(
     public readonly id: string,
-    public readonly userName: string,
+    public readonly currentUser = sessionStorage.getItem("user"),
+    // public readonly userName: string,
     public readonly message: string,
     public readonly timeStamp: string
   ) {
@@ -26,21 +27,22 @@ export class Messages {
     const date = new Date();
 
     userNameElement.innerText =
-      this.timeStamp + `${this.userName} says ${this.message}`;
+      this.timeStamp + `${sessionStorage.getItem("user")} says ${this.message}`;
     msgContainer.append(userNameElement);
 
     //Create the remove button
     const removeBtn = document.createElement("button") as HTMLButtonElement;
     removeBtn.innerText = "X";
     msgContainer.append(removeBtn);
-
+    
     //Removebuttons event
-    removeBtn.addEventListener("click", () => {
-      const userName = document.getElementById("userName") as HTMLInputElement;
-
-      if (this.userName == userName.value) {
+    removeBtn.addEventListener("click", () =>
+    {
+      // const userName = document.getElementById("userName") as HTMLInputElement;
+      
+      if (this.currentUser == this.currentUser)
+      {
         //Set the reference in the database
-        //TODO: change topics later
         const msgRef = ref(db, "/Topics/Games/" + this.id);
         remove(msgRef);
       }
@@ -88,7 +90,7 @@ onValue(dbRef, (snapshot) => {
 });
 document.getElementById("send").addEventListener("click", (e) => {
   e.preventDefault();
-  const name = document.getElementById("userName") as HTMLInputElement;
+  const name = sessionStorage.getItem("user");
   const message = document.getElementById("userMessage") as HTMLInputElement;
   const date = new Date();
   const messageToAdd = {
@@ -103,7 +105,7 @@ document.getElementById("send").addEventListener("click", (e) => {
       ":" +
       date.getMinutes() +
       ": ",
-    name: name.value,
+    name: sessionStorage.getItem("user"),
     message: message.value,
   };
 
