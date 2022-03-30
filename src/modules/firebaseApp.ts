@@ -4,6 +4,8 @@ import { getDatabase, set, ref } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyCTRAdceoTbtvNIW6CjcnSDwqsovjuM9aY",
   authDomain: "gritverse-15493.firebaseapp.com",
+  databaseURL:
+    "https://gritverse-15493-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "gritverse-15493",
   databaseURL: "https://gritverse-15493-default-rtdb.europe-west1.firebasedatabase.app/",
   storageBucket: "gritverse-15493.appspot.com",
@@ -16,13 +18,9 @@ const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 
 export class UserSign {
-  public email: string;
   public username: string;
   public password: boolean;
-  public key: string;
-  constructor(key: string, email: string, username: string, password: boolean) {
-    this.key = key;
-    this.email = email;
+  constructor(username: string, password: boolean) {
     this.username = username;
     this.password = password;
   }
@@ -31,10 +29,8 @@ export class UserSign {
     const db = getDatabase();
     set(ref(db, "/users/userInfo" + this.username), {
       username: this.username,
-      email: this.email,
       password: this.password,
     });
-    console.log(this.createUser(this.username, this.email, this.password));
+    console.log(this.createUser(this.username, "", this.password));
   }
-  
 }

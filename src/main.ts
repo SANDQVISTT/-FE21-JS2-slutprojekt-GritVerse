@@ -10,9 +10,13 @@ import {
   getDatabase,
 } from "firebase/database";
 import { db } from "./modules/firebaseApp";
+import { DisplayToDom } from "./modules/display";
+
 const dbRef = ref(db, "/users/userInfo/");
 
 console.log("hello world");
+
+/* new DisplayToDom().hideRegisterElements() */
 
 document.getElementById("login").addEventListener("click", (e) => {
   e.preventDefault();
@@ -25,30 +29,84 @@ document.getElementById("login").addEventListener("click", (e) => {
 
   const dbRef = ref(getDatabase());
   get(child(dbRef, `users/userInfo/${username.value}`)).then((snapshot) => {
-    if (username.value == "" || password.value == "")
-      console.log("fill in everything");
-    else if (password.value == snapshot.val().password) {
-      location.href = 'html/home.html';
+    if (username.value == "" || password.value == "") {
+      new DisplayToDom().createErrorMsg();
+    } else if (password.value == snapshot.val().password) {
+      location.href = "html/home.html";
     } else if (password.value != snapshot.val().password) {
-      console.log("wrong password");
+      new DisplayToDom().wrongPassword();
     } else if (snapshot.exists()) {
       console.log(snapshot.val(), "is a user");
-    } else {
-      console.log("This user does not exist");
+    } else if (username.value != snapshot.val().username) {
+      new DisplayToDom().doesntExist();
     }
-    sessionStorage.setItem("name",`${username.value}`);
-    sessionStorage.setItem("gender",'male'/* `${gender.value}` */);
+    sessionStorage.setItem("user", `${snapshot.val().username}`);
+    sessionStorage.setItem("gender", `${snapshot.val().gender}`);
+    sessionStorage.setItem("bio", `${snapshot.val().bio}`);
 
-    
   });
 });
-let users: UserSign[] = [];
+document.getElementById("register").addEventListener("click", (e) => {
+  e.preventDefault();
 
-console.log(users);
-console.log(dbRef);
+  const d = new DisplayToDom();
 
-/* new UserSign(); */
+  d.hideLoginPage();
+  console.log("hide login", e.target);
+
+  document.getElementById("return").addEventListener("click", (e) => {
 
 
+    // const p = new DisplayToDom();
 
+    d.showLoginPage();
+    console.log("show login", e.target);
+    e.stopPropagation();
+  });
+});
 
+document
+  .getElementById("register-user-to-site")
+  .addEventListener("click", (e) => {
+    e.preventDefault;
+
+    const username: HTMLInputElement = document.querySelector("#username");
+    const password: HTMLInputElement = document.querySelector("#password");
+    const gender: HTMLInputElement = document.querySelector("#gender");
+    const bio: HTMLInputElement = document.querySelector("#bio");
+
+    const newUsername: string = username.value.toLowerCase();
+
+    if (newUsername === "" || password.value === "" || bio.value === "") {
+      alert("write every block kiddo");
+    } else {
+      console.log("GENDER: ", document.querySelector("#gender"));
+      const addUser = {
+        username: (document.querySelector("#username") as HTMLInputElement)
+          .value,
+        password: (document.querySelector("#password") as HTMLInputElement)
+          .value,
+        gender: (document.querySelector("#gender") as HTMLInputElement).value,
+        bio: (document.querySelector("#bio") as HTMLInputElement).value,
+        
+      };
+      
+      get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
+        console.log(snapshot.val(), snapshot.exists());
+        if (snapshot.exists()) {
+          alert("this username already exists");
+        } else {
+          if (newUsername != "" && password.value != "" && bio.value != "") {
+            const newKey: string = newUsername;
+            const newUser = {};
+            newUser[newKey] = addUser;
+            update(dbRef, newUser);
+            
+          }
+        }
+      });
+    }
+  });
+ 
+/* let users: UserSign[] = [];
+ */

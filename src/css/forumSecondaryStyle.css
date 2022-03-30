@@ -1,3 +1,4 @@
+
 #topicWrapper
 {
     display: flex;
@@ -23,22 +24,23 @@ input
 {
     box-shadow: 2px 2px 2px #8FA0A6;
 }
-#MusicTag
-{
-    width: 25%;
-    height: 40%;
-    padding: 1.5rem, 0rem;
-    margin: 7rem, 0rem;
-    background-color: rgb(65, 65, 65);
+
+#MusicTag {
+  width: 25%;
+  height: 40%;
+  padding: 1.5rem, 0rem;
+  margin: 1.5rem, 0rem;
+  background-color: rgb(65, 65, 65);
+
 }
-#GamesTag
-{
-    width: 25%;
-    height: 40%;
-    padding: 1.5rem, 0rem;
-    margin: 1.5rem, 0rem;
-    background-color: rgb(65, 65, 65);
+#GamesTag {
+  width: 25%;
+  height: 40%;
+  padding: 1.5rem, 0rem;
+  margin: 1.5rem, 0rem;
+  background-color: rgb(65, 65, 65);
 }
+
 #ShowsTag
 {
     width: 25%;
