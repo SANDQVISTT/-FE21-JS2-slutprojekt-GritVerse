@@ -56,9 +56,29 @@ export class DisplayToDom {
   }
 
   public showLoginPage(): void {
-    const returnToLogin: HTMLElement = document.getElementById('return')
-    returnToLogin.innerHTML = 'hej'
+    document.getElementById("return").addEventListener("click", (e) => {
+      e.preventDefault();
+      const dropdown: HTMLElement = document.querySelector("#gender-choice");
+      const textarea: HTMLElement = document.querySelector("#user-bio");
+      const loginTitle: HTMLElement = document.getElementById("login-title");
+      const passwordTitle: HTMLElement =
+        document.getElementById("password-title");
+      const registerBtn: HTMLElement = document.querySelector("#register-user");
+      const login: HTMLElement = document.querySelector("#login");
+      const alreadyAccount: HTMLElement = document.getElementById("register");
 
+      dropdown.style.display = "none";
+      textarea.style.display = "none";
+      loginTitle.innerText = "Log in";
+      passwordTitle.style.display = "none";
+      registerBtn.style.display = "none";
+      login.style.display = "revert";
+      alreadyAccount.style.display = "center";
+      alreadyAccount.innerHTML =
+        'No account? <a id="return" href="">Register here</a>';
+
+      console.log("in return");
+    });
   }
 
   public registerPage(): void {}
