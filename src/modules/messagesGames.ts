@@ -21,12 +21,24 @@ export class Messages
         msgWrapper.append(msgContainer);
         //Set the messages ID to the div containing the message
         // msgContainer.id = this.id;
-        msgContainer.classList.add(this.id);
+        msgContainer.classList.add(this.id, "chat-styling");
         
         //Create the userName h4 element
         const userNameElement = document.createElement("h4") as HTMLHeadElement;
         //Set the userName and the timeStamp
-        userNameElement.innerText = `${this.timeStamp}, ${this.userName}, ${this.message}`;
+        const date = new Date();
+        timeStamp:
+        date.getFullYear() +
+        " " +
+        (date.getMonth() + 1) +
+        "/" +
+        date.getUTCDate() +
+        " - " +
+        date.getHours() +
+        ":" +
+        date.getMinutes() +
+        ":";
+        userNameElement.innerText = this.timeStamp + `${this.userName}, ${this.message}`;
         msgContainer.append(userNameElement);
         
         // const date = new Date();
@@ -97,7 +109,6 @@ export class Messages
                 if(messageArray.length>25)
                 {
                     //Set the reference in the database
-                    //TODO: change reference with all 3 topics
                     const post = ref(db, "/Topics/games/" + index0);
                     remove(post);
                 }
@@ -129,6 +140,6 @@ export class Messages
         
     function scrollDown():void
     {
-        const e = document.getElementById("messages");
+        const e = document.getElementById("messagesGames");
         e.scrollTop = e.scrollHeight;
     };

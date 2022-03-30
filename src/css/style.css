@@ -59,19 +59,26 @@ button {
   width: 200px;
   margin: 3px;
   box-shadow: 1px 1.4px 2px #8fa0a6;
+
 }
 header {
   padding: 2rem;
   text-align: center;
+
 }
 footer {
   background-color: rgb(51, 51, 51);
   color: white;
   border-top: 2px solid #8fa0a6;
   text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
+
+  
 li a:hover {
   background-color: #111;
 }

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/forumSecondaryStyle.css">
-    <script src="../modules/messagesGames.ts" type="module"></script>
     <title>GritVerse - Forum</title>
 </head>
 <body>
@@ -20,9 +19,11 @@
             <li><a href="../index.html">Logout</a></li>
         </ul>
     </nav>
-    <div><a href="./forum/forumMusic.html">Music</a></div>
-    <div><a href="./forum/forumShows.html">Shows</a></div>
-    <div><a href="./forum/forumGames.html">Games</a></div>
+    <div id="topicWrapper">
+        <div id="musicDiv"><a href="./forum/forumMusic.html"><p>Music</p></a></div>
+        <div id="showsDiv"><a href="./forum/forumShows.html"><p>Shows</p></a></div>
+        <div id="gamesDiv"><a href="./forum/forumGames.html"><p>Games</p></a></div>
+    </div>
     <footer>
         <p>Placeholder Inc</p>
     </footer>
