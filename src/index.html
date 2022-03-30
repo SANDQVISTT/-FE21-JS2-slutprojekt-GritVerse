@@ -16,26 +16,52 @@
         <li><a href="./html/forumMain.html">Forum</a></li>
     </ul>
 </nav>
-    <body>
-        <div id="main">
-            <header id="header">
-                <h1 id="gritverse-title">Welcome to GritVerse</h1>
-            </header>
-            <div id="form-title-container">
 
-                <h2 id="login-title">Login</h2>
+<body>
+    <div id="main">
+        <header id="header">
+            <h1 id="gritverse-title">Welcome to GritVerse</h1>
+        </header>
+        <div id="form-title-container">
 
-                <input type="text" placeholder="Username" id="username">
-                <input type="password" id="password" placeholder="Password">
+            <h2 id="login-title">Login</h2>
 
-                <button id="login">Log In</button>
-                <button id="register">Register</button>
-
-
+            <input type="text" placeholder="Username" id="username" required>
+            <h2 id="password-title"></h2>
+            <input type="password" id="password" placeholder="Password" required>
+            <!-- <h2 id="gender"></h2> -->
+            <div id="gender-choice" style="display: none;">
+                <select name="gender" id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="dont-disclousre">Don't want to disclousre</option>
+                </select>
             </div>
+
+            <div id="user-bio" style="display: none;">
+                <h2 id="bio-title"></h2>
+                <textarea name="" id="bio" cols="40" rows="10" required></textarea>
+            </div>
+
+            <div id="register-user" style="display: none;">
+                <button id="register-user-to-site">Create user</button>
+            </div>
+            <button id="login">Log In</button>
+            <p id="register">No account?<a id="home-page-link" href=""> Register</a> here</p>
+            <p id="return">
+                <!-- Already have an account? --><a id="return-home-link" href="">
+                    <!--  Click here -->
+                </a>
+            </p>
+            <!--                  <p id="register">Already have an account?<a id="return" href="">Click here</p> -->
+
+           
         </div>
-    <footer>
+    </div>
+    <!-- <footer>
         <p>Placeholder Inc</p>
-    </footer>
-    </body>
+    </footer> -->
+</body>
+
 </html>
