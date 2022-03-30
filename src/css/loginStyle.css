@@ -1,0 +1,30 @@
+#main
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#gritverse-title
+{
+    text-shadow: 0.8px 0.8px 0.8px #8FA0A6;
+}
+#login-title
+{
+    color: white;
+    text-shadow: 0.8px 0.8px 0.8px #8FA0A6;
+}
+#form-title-container
+{
+  border-radius: 2.5%;
+  box-shadow: 4.4px 4.4px 4.4px #8FA0A6;
+  text-align: center;
+  background-color: #333;
+  width: 25%;
+  height: 500px;
+  padding: 75px, 75px, 76px;
+}
+#password
+{
+  margin-bottom: 25px;
+}

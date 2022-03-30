@@ -1,27 +1,23 @@
-* {
+*
+{
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
 }
-header {
-  padding: 2rem;
-  text-align: center;
+nav ul
+{ 
+top: 0;
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;
 }
-ul {
-  top: 0;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
 li
 {
   float: left;
 }
-
 li a
 {
   display: block;
@@ -30,36 +26,29 @@ li a
   padding: 14px 16px;
   text-decoration: none;
 }
-
 li a:hover
 {
   background-color: #111;
 }
-
+body
+{
+  background-color: #E4EFF2;
+}
+header
+{
+  padding: 2rem;
+  text-align: center;
+}
 footer
 {
-  border: 2px solid black;
+  background-color: rgb(51, 51, 51);
+  color: white;
+  border-top: 2px solid #8FA0A6;
   text-align: center;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
-}
-#main
-{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-}
-#form-title-container
-{
-  text-align: center;
-  background-color: #333;
-  width: 25%;
-  height: 500px;
-  padding: 75px, 75px, 76px ;
+  height: 2.5rem;        
 }
 input
 {
@@ -68,70 +57,31 @@ input
   width: 200px;
   text-align: center;
   margin: 3px;
+  box-shadow: 1.0px 1.4px 2.0px #8FA0A6;
 }
-
-#password
+textarea
 {
-  margin-bottom: 25px;
-}
-
-#login-title
-{
-color: white;
+    background-color: #c7c7c7;
 }
 button
 {
+  border-radius: 15px;
   height: 30px;
   width: 200px;
   margin: 3px;
+  box-shadow: 1.0px 1.4px 2.0px #8FA0A6;
 }
-header
+footer
 {
-    padding: 2rem;
-    text-align: center;
+  background-color: rgb(51, 51, 51);
+  color: white;
+  border-top: 2px solid #8FA0A6;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;        
 }
-
-ul
-{
-   
-    top: 0;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li
-  {
-   float: left;
-  }
-  
-  
-  li a
-  {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  li a:hover
-  {
-    background-color: #111;
-  }
-
-
-  footer
-  {
-      border: 2px solid black;
-        text-align: center;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 2.5rem;        
-  }
 #ProfileInfo
 {
   text-align: center;
