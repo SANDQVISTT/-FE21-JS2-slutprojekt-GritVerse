@@ -48,13 +48,16 @@ document.getElementById("register").addEventListener("click", (e) => {
   const d = new DisplayToDom();
 
   d.hideLoginPage();
+  console.log("hide login", e.target);
 
   document.getElementById("return").addEventListener("click", (e) => {
-    e.preventDefault();
 
-    const p = new DisplayToDom();
 
-    p.showLoginPage();
+    // const p = new DisplayToDom();
+
+    d.showLoginPage();
+    console.log("show login", e.target);
+    e.stopPropagation();
   });
 });
 
@@ -68,7 +71,7 @@ document
     const gender: HTMLInputElement = document.querySelector("#gender");
     const bio: HTMLInputElement = document.querySelector("#bio");
 
-    const newUsername:string = username.value.toLowerCase();
+    const newUsername: string = username.value.toLowerCase();
 
     if (newUsername === "" || password.value === "" || bio.value === "") {
       alert("write every block kiddo");
@@ -99,6 +102,4 @@ document
   });
 /* let users: UserSign[] = [];
  */
-    sessionStorage.setItem("name",`${username.value}`);
-  });
-});
+/*  */

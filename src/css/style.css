@@ -1,25 +1,21 @@
-*
-{
+* {
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
 }
-nav ul
-{ 
-top: 0;
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #333;
+nav ul {
+  top: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
-li
-{
+li {
   float: left;
 }
-li a
-{
+li a {
   display: block;
   color: white;
   text-align: center;
@@ -29,24 +25,20 @@ li a
 li a:hover {
   background-color: #111;
 }
-li a:hover
-{
+li a:hover {
   background-color: #111;
 }
-body
-{
-  background-color: #E4EFF2;
+body {
+  background-color: #e4eff2;
 }
-header
-{
+header {
   padding: 2rem;
   text-align: center;
 }
-footer
-{
+footer {
   background-color: rgb(51, 51, 51);
   color: white;
-  border-top: 2px solid #8FA0A6;
+  border-top: 2px solid #8fa0a6;
   text-align: center;
   position: absolute;
   bottom: 0;
@@ -59,22 +51,18 @@ input {
   width: 200px;
   text-align: center;
   margin: 3px;
-  box-shadow: 1.0px 1.4px 2.0px #8FA0A6;
+  box-shadow: 1px 1.4px 2px #8fa0a6;
 }
-button
-{
-textarea
-{
-    background-color: #c7c7c7;
+button textarea {
+  background-color: #c7c7c7;
 }
-button
-{
+button {
   border-radius: 15px;
   height: 30px;
   width: 200px;
   margin: 3px;
-  box-shadow: 1.0px 1.4px 2.0px #8FA0A6;
-  }
+  box-shadow: 1px 1.4px 2px #8fa0a6;
+}
 header {
   padding: 2rem;
   text-align: center;
@@ -105,27 +93,22 @@ li a:hover {
   text-align: center;
   justify-content: center;
 }
-#home-page-paragraph {
+
+#register {
   color: white;
 }
-p{
+#home-page-link {
   color: white;
 }
-#home-page-link:hover{
-  color: #8FA0A6;
+#home-page-link:hover {
+  color: #8fa0a6;
 }
-a {
+#return {
   color: white;
 }
-#form-title-container, h2 {
-  color: white;
+#return:hover {
+  color: #8fa0a6;
 }
-textarea {
-  resize: none;
-  height: 2.5rem;        
-}
-#ProfileInfo
-{
+#login button {
   text-align: center;
-  justify-content: center;
 }
