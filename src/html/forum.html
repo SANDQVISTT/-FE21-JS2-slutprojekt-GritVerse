@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/ForumSecondaryStyle.css">
     <script src="../modules/messages.ts" type="module"></script>
     <title>GritVerse - Forum</title>
 </head>
@@ -19,17 +20,39 @@
             <li><a href="../index.html">Logout</a></li>
         </ul>
     </nav>
-    <!-- Forum -->
-    <div id="messages">
-    </div>
-    <form>
-        <input type="text" placeholder="Name" id="userName">
-        <textarea type="text" placeholder= "Message..." cols="10" rows="4" id="userMessage"></textarea>
-        <button type="submit" id="send">Send!</button>
-    </form>        
+    <div id="MusicTag">Music</div>
+    <div id="GamesTag">Games</div>
+    <div id="ShowsTag">Shows</div>
+
+    <section id="music">
+        <div id="messagesMusic">
+        </div>
+        <form>
+            <input type="text" placeholder="Name" id="userNameMusic">
+            <textarea type="text" placeholder= "Message..." cols="10" rows="4" id="userMessage"></textarea>
+            <button type="submit" id="send">Send!</button>
+        </form>
+    </section>
+    <section id="games">
+        <div id="messagesGames">
+        </div>
+        <form>
+            <input type="text" placeholder="Name" id="userNameGames">
+            <textarea type="text" placeholder= "Message..." cols="10" rows="4" id="userMessage"></textarea>
+            <button type="submit" id="send">Send!</button>
+        </form>
+    </section>
+    <section id="shows">
+        <div id="messagesShows">
+        </div>
+        <form>
+            <input type="text" placeholder="Name" id="userNameShows">
+            <textarea type="text" placeholder= "Message..." cols="10" rows="4" id="userMessage"></textarea>
+            <button type="submit" id="send">Send!</button>
+        </form>
+    </section>
     <footer>
         <p>Placeholder Inc</p>
     </footer>
-
 </body>
 </html>

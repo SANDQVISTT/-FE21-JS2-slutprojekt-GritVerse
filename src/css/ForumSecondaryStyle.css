@@ -1,0 +1,24 @@
+#MusicTag
+{
+    width: 25%;
+    height: 40%;
+    padding: 1.5rem, 0rem;
+    margin: 1.5rem, 0rem;
+    background-color: rgb(65, 65, 65);
+}
+#GamesTag
+{
+    width: 25%;
+    height: 40%;
+    padding: 1.5rem, 0rem;
+    margin: 1.5rem, 0rem;
+    background-color: rgb(65, 65, 65);
+}
+#ShowsTag
+{
+    width: 25%;
+    height: 40%;
+    background-color: rgb(65, 65, 65);
+    padding: 1.5rem, 0rem;
+    margin: 1.5rem, 0rem;
+}

@@ -12,6 +12,42 @@ export class Messages
     {
         this.displayMsg();
     }
+    private showHideContent():void
+    {
+        const musicTag = document.getElementById("MusicTag") as HTMLDivElement;
+        const messagesMusic = document.getElementById("messageMusic") as HTMLDivElement;
+
+        const gamesTag = document.getElementById("GamesTag") as HTMLDivElement;
+        const messagesGames = document.getElementById("messageGames") as HTMLDivElement;
+
+        const showsTag = document.getElementById("ShowsTag") as HTMLDivElement;
+        const messagesShows = document.getElementById("messageShows") as HTMLDivElement;
+
+        musicTag.addEventListener("click", (e)=>
+        {
+            gamesTag.style.visibility = "hidden";
+            messagesGames.style.visibility = "hidden";
+            showsTag.style.visibility = "hidden";
+            messagesShows.style.visibility = "hidden";
+            // const topic = "music";
+        });
+
+        gamesTag.addEventListener("click", (e)=>
+        {
+            musicTag.style.visibility = "hidden";
+            messagesMusic.style.visibility = "hidden";
+            showsTag.style.visibility = "hidden";
+            messagesShows.style.visibility = "hidden";
+        });
+
+        showsTag.addEventListener("click", (e)=>
+        {
+            musicTag.style.visibility = "hidden";
+            messagesShows.style.visibility = "hidden";
+            gamesTag.style.visibility = "hidden";
+            messagesGames.style.visibility = "hidden";
+        });
+    }
     private displayMsg():void
     {
         //The section containing all messages (section for each topic?)
@@ -57,7 +93,7 @@ export class Messages
             {
                 //Set the reference in the database
                 //TODO: change topics later
-                const msgRef = ref(db, "/Topics/Games/" + this.id);
+                const msgRef = ref(db, `/Topics/Games/` + this.id);
                 remove(msgRef);
             }
         });
