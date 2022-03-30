@@ -10,11 +10,13 @@ import {
   getDatabase,
 } from "firebase/database";
 import { db } from "./modules/firebaseApp";
-import { Messages } from "./modules/messages";
+import { DisplayToDom } from "./modules/display";
 
 const dbRef = ref(db, "/users/userInfo/");
 
 console.log("hello world");
+
+/* new DisplayToDom().hideRegisterElements() */
 
 document.getElementById("login").addEventListener("click", (e) => {
   e.preventDefault();
@@ -27,88 +29,73 @@ document.getElementById("login").addEventListener("click", (e) => {
 
   const dbRef = ref(getDatabase());
   get(child(dbRef, `users/userInfo/${username.value}`)).then((snapshot) => {
-    if (username.value == "" || password.value == "")
-      console.log("fill in everything");
-    else if (password.value == snapshot.val().password) {
-      location.href = 'html/home.html';
+    if (username.value == "" || password.value == "") {
+      new DisplayToDom().createErrorMsg();
+    } else if (password.value == snapshot.val().password) {
+      location.href = "html/home.html";
     } else if (password.value != snapshot.val().password) {
-      console.log("wrong password");
+      new DisplayToDom().wrongPassword();
     } else if (snapshot.exists()) {
       console.log(snapshot.val(), "is a user");
-    } else {
-      console.log("This user does not exist");
+    } else if (username.value != snapshot.val().username) {
+      new DisplayToDom().doesntExist();
     }
   });
 });
-const dbRef = ref (db, "/Topics/Games/");
-let messages:Messages[] = [];
+document.getElementById("register").addEventListener("click", (e) => {
+  e.preventDefault();
 
-onValue(dbRef, (snapshot) =>
-    {
-        const messageData = snapshot.val();
-        for(const message of messages)
-        {
-            message.clearDOM();
-        }
-        messages = [];
-        for (const key in messageData)
-        {
-            messages.push(new Messages(
-                key, messageData[key].name,
-                messageData[key].message,
-                messageData[key].timeStamp
-            ))
-        }
-        //Scroll to the bottom
-        scrollDown();
-        //Remove the 26th post
-        function postLimiter():void
-        {
-            const messageArray = Object.values(messageData);
-            const index0 = Object.keys(messageData)[0];
-            for(let i = 0; i < messageArray.length; i++)
-            {
-                if(messageArray.length>25)
-                {
-                    //Set the reference in the database
-                    //TODO: change reference with all 3 topics
-                    const post = ref(db, "/Topics/games/" + index0);
-                    remove(post);
-                }
-            }
-        }
-       if (messageData)
-       {
-        postLimiter();
-       }
-    });
-document.getElementById("send").addEventListener("click", (e) =>
-    {
-        e.preventDefault();
-        const name = document.getElementById("userName") as HTMLInputElement;
-        const message = document.getElementById("userMessage") as HTMLInputElement;
-        
-        const messageToAdd = 
-        {
-            name: name.value,
-            message: message.value,
-        }
-        
-        const newKey:string = push(dbRef).key;
-        const newMessage = {};
-        newMessage[newKey] = messageToAdd;
-        
-        update(dbRef, newMessage);
-    });
-    
-function scrollDown():void
-{
-    const e = document.getElementById("messages");
-    e.scrollTop = e.scrollHeight;
-};
-let users: UserSign[] = [];
+  const d = new DisplayToDom();
 
-console.log(users);
-console.log(dbRef);
+  d.hideLoginPage();
 
-/* new UserSign(); */
+  document.getElementById("return").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const p = new DisplayToDom();
+
+    p.showLoginPage();
+  });
+});
+
+document
+  .getElementById("register-user-to-site")
+  .addEventListener("click", (e) => {
+    e.preventDefault;
+
+    const username: HTMLInputElement = document.querySelector("#username");
+    const password: HTMLInputElement = document.querySelector("#password");
+    const gender: HTMLInputElement = document.querySelector("#gender");
+    const bio: HTMLInputElement = document.querySelector("#bio");
+
+    const newUsername:string = username.value.toLowerCase();
+
+    if (newUsername === "" || password.value === "" || bio.value === "") {
+      alert("write every block kiddo");
+    } else {
+      console.log("GENDER: ", document.querySelector("#gender"));
+      const addUser = {
+        username: (document.querySelector("#username") as HTMLInputElement)
+          .value,
+        password: (document.querySelector("#password") as HTMLInputElement)
+          .value,
+        gender: (document.querySelector("#gender") as HTMLInputElement).value,
+        bio: (document.querySelector("#bio") as HTMLInputElement).value,
+      };
+      get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
+        console.log(snapshot.val(), snapshot.exists());
+        if (snapshot.exists()) {
+          alert("this username already exists");
+        } else {
+          if (newUsername != "" && password.value != "" && bio.value != "") {
+            const newKey: string = newUsername;
+            const newUser = {};
+            newUser[newKey] = addUser;
+            update(dbRef, newUser);
+          }
+        }
+      });
+    }
+  });
+/* let users: UserSign[] = [];
+ */
