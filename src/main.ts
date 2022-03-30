@@ -10,8 +10,6 @@ import {
   getDatabase,
 } from "firebase/database";
 import { db } from "./modules/firebaseApp";
-
-
 const dbRef = ref(db, "/users/userInfo/");
 
 console.log("hello world");

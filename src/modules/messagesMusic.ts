@@ -21,7 +21,7 @@ export class Messages
         msgWrapper.append(msgContainer);
         //Set the messages ID to the div containing the message
         // msgContainer.id = this.id;
-        msgContainer.classList.add(this.id);
+        msgContainer.classList.add(this.id, "chat-styling");
         
         //Create the userName h4 element
         const userNameElement = document.createElement("h4") as HTMLHeadElement;
@@ -97,7 +97,6 @@ export class Messages
                 if(messageArray.length>25)
                 {
                     //Set the reference in the database
-                    //TODO: change reference with all 3 topics
                     const post = ref(db, "/Topics/Music/" + index0);
                     remove(post);
                 }
@@ -129,6 +128,6 @@ export class Messages
         
     function scrollDown():void
     {
-        const e = document.getElementById("messages");
+        const e = document.getElementById("messagesMusic");
         e.scrollTop = e.scrollHeight;
     };
