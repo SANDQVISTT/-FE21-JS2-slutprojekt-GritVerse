@@ -1,57 +1,29 @@
 import { db } from "./firebaseApp";
-import { onValue,ref } from "firebase/database";
+import { onValue, ref, get } from "firebase/database";
 
-const dbReff = ref(db, '/users/userInfo');
-console.log(dbReff);
-
-onValue(dbReff, snapshot=>{
+/* const dbReff = ref(db, '/users/userInfo');
+ onValue(dbReff, snapshot=>{
     const data = snapshot.val();
-    console.log(data);
+    console.log(data)
+
+ }) */
+
+const edizRef = ref(db, '/users/userInfo/edzone')
+get(edizRef).then(snapshot => {
     
+    console.log(snapshot.val());
 })
+//Hämtar användernamn och kön ifrån Main.ts och sätter ut på profil-sidan
+let usernameID = sessionStorage.getItem("name");
+let genderID = sessionStorage.getItem("gender");
 
-export class Profile{
-    //private readonly password:string
-
-    constructor(
-    public readonly userName: string,
-    public readonly gender: string,
-    public readonly bio:string,
-    ){}
-
-    
-    
-         public displayProfile():void{
-           const name:HTMLElement = document.querySelector('#nameID');
-           const gender:HTMLElement = document.querySelector('#genderID');
-           const bio:HTMLElement = document.querySelector('#bioID');
-            name.innerText = `${this.userName}`
-            gender.innerText = `${this.gender}`;
-            //bio.innerText = `${this.bio}`
-            console.log(this.userName)
-                
-                name.append(name);
-                gender.append(gender);
-                bio.append(bio)
-            }
-            }
-    
-
-        /* onValue(dbReff, snapshot=>{
-            const data = snapshot.val();
-        for(const key in data){
-            console.log(key, data[key].name);
-            const name = document.createElement('h3');
-            const gender = document.createElement('h3');
-            const bio = document.createElement('h3'); */
-        
-        
+const namn:HTMLElement = document.querySelector('#UsernameID')
+const gender: HTMLElement = document.querySelector('#genderID');
+gender.innerText = genderID
+namn.innerText = usernameID
 
 
-        
-            
-            
-       
 
 
-          
+
+

@@ -10,7 +10,7 @@ import {
   getDatabase,
 } from "firebase/database";
 import { db } from "./modules/firebaseApp";
-import { Profile } from "./modules/profile";
+
 
 const dbRef = ref(db, "/users/userInfo/");
 
@@ -38,6 +38,10 @@ document.getElementById("login").addEventListener("click", (e) => {
     } else {
       console.log("This user does not exist");
     }
+    sessionStorage.setItem("name",`${username.value}`);
+    sessionStorage.setItem("gender",'male'/* `${gender.value}` */);
+
+    
   });
 });
 let users: UserSign[] = [];
@@ -46,3 +50,7 @@ console.log(users);
 console.log(dbRef);
 
 /* new UserSign(); */
+
+
+
+
