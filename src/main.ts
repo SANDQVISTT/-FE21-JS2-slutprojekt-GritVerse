@@ -40,6 +40,10 @@ document.getElementById("login").addEventListener("click", (e) => {
     } else if (username.value != snapshot.val().username) {
       new DisplayToDom().doesntExist();
     }
+    sessionStorage.setItem("user", `${snapshot.val().username}`);
+    sessionStorage.setItem("gender", `${snapshot.val().gender}`);
+    sessionStorage.setItem("bio", `${snapshot.val().bio}`);
+
   });
 });
 document.getElementById("register").addEventListener("click", (e) => {
@@ -81,7 +85,9 @@ document
           .value,
         gender: (document.querySelector("#gender") as HTMLInputElement).value,
         bio: (document.querySelector("#bio") as HTMLInputElement).value,
+        
       };
+      
       get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
         console.log(snapshot.val(), snapshot.exists());
         if (snapshot.exists()) {
@@ -92,11 +98,13 @@ document
             const newUser = {};
             newUser[newKey] = addUser;
             update(dbRef, newUser);
+            
           }
         }
       });
     }
   });
+ 
 /* let users: UserSign[] = [];
  */
     /* sessionStorage.setItem("name",`${username.value}`);
