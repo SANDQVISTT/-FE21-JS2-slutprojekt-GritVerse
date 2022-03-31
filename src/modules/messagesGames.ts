@@ -23,8 +23,6 @@ export class Messages {
     //Create the userName h4 element
     const userNameElement = document.createElement("h4") as HTMLHeadElement;
     //Set the userName and the timeStamp
-    const date = new Date();
-
     userNameElement.innerText =
       this.timeStamp + `${this.userName} says ${this.message}`;
     msgContainer.append(userNameElement);
