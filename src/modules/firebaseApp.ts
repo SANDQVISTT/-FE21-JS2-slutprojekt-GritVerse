@@ -1,5 +1,16 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref } from "firebase/database";
+import {
+  set,
+  ref,
+  onValue,
+  update,
+  remove,
+  push,
+  get,
+  child,
+  getDatabase,
+} from "firebase/database";
+import { DisplayToDom } from "./display";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCTRAdceoTbtvNIW6CjcnSDwqsovjuM9aY",
@@ -15,21 +26,93 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
-
+const dbRef = ref(db, "/users/userInfo/");
 export class UserSign {
-  public username: string;
-  public password: boolean;
-  constructor(username: string, password: boolean) {
+  public username: HTMLInputElement;
+  public password: HTMLInputElement;
+  constructor(username?: HTMLInputElement, password?: HTMLInputElement) {
     this.username = username;
     this.password = password;
   }
 
-  public createUser(email: string, username: string, password: boolean): void {
-    const db = getDatabase();
-    set(ref(db, "/users/userInfo" + this.username), {
-      username: this.username,
-      password: this.password,
+  public createUser(): void {
+    document
+      .getElementById("register-user-to-site")
+      .addEventListener("click", (e) => {
+        e.preventDefault;
+
+        this.username = document.querySelector("#username");
+        this.password = document.querySelector("#password");
+        const bio: HTMLInputElement = document.querySelector("#bio");
+
+        const newUsername: string = this.username.value.toLowerCase();
+
+        if (
+          newUsername === "" ||
+          this.password.value === "" ||
+          bio.value === ""
+        ) {
+          alert("write every block kiddo");
+        } else {
+          console.log("GENDER: ", document.querySelector("#gender"));
+          const addUser = {
+            username: (document.querySelector("#username") as HTMLInputElement)
+              .value,
+            password: (document.querySelector("#password") as HTMLInputElement)
+              .value,
+            gender: (document.querySelector("#gender") as HTMLInputElement)
+              .value,
+            bio: (document.querySelector("#bio") as HTMLInputElement).value,
+          };
+
+          get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
+            console.log(snapshot.val(), snapshot.exists());
+            if (snapshot.exists()) {
+              alert("this username already exists");
+            } else {
+              if (
+                newUsername != "" &&
+                this.password.value != "" &&
+                bio.value != ""
+              ) {
+                const newKey: string = newUsername;
+                const newUser = {};
+                newUser[newKey] = addUser;
+                update(dbRef, newUser);
+              }
+              location.href = "html/home.html";
+            }
+          });
+        }
+      });
+  }
+
+  public logIn(): void {
+    document.getElementById("login").addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const username: HTMLInputElement = document.querySelector("#username");
+      const password: HTMLInputElement = document.querySelector("#password");
+
+      console.log(username.value);
+
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `users/userInfo/${username.value}`)).then((snapshot) => {
+        if (username.value == "" || password.value == "") {
+          new DisplayToDom().createErrorMsg();
+        } else if (password.value == snapshot.val().password) {
+          location.href = "html/home.html";
+        } else if (password.value != snapshot.val().password) {
+          new DisplayToDom().wrongPassword();
+        } else if (snapshot.exists()) {
+          console.log(snapshot.val(), "is a user");
+        } else if (username.value != snapshot.val().username) {
+          new DisplayToDom().doesntExist();
+        }
+        sessionStorage.setItem("user", `${snapshot.val().username}`);
+        sessionStorage.setItem("gender", `${snapshot.val().gender}`);
+        sessionStorage.setItem("bio", `${snapshot.val().bio}`);
+      });
     });
-    console.log(this.createUser(this.username, "", this.password));
   }
 }
