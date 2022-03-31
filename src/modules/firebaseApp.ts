@@ -1,15 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  set,
-  ref,
-  onValue,
-  update,
-  remove,
-  push,
-  get,
-  child,
-  getDatabase,
-} from "firebase/database";
+import { ref, update, get, child, getDatabase } from "firebase/database";
 import { DisplayToDom } from "./display";
 
 const firebaseConfig = {
@@ -30,6 +20,8 @@ const dbRef = ref(db, "/users/userInfo/");
 export class UserSign {
   public username: HTMLInputElement;
   public password: HTMLInputElement;
+  public gender: HTMLInputElement;
+  public bio: HTMLInputElement;
   constructor(username?: HTMLInputElement, password?: HTMLInputElement) {
     this.username = username;
     this.password = password;
@@ -91,28 +83,30 @@ export class UserSign {
     document.getElementById("login").addEventListener("click", (e) => {
       e.preventDefault();
 
-      const username: HTMLInputElement = document.querySelector("#username");
-      const password: HTMLInputElement = document.querySelector("#password");
+      this.username = document.querySelector("#username");
+      this.password = document.querySelector("#password");
+      this.gender = document.querySelector("#gender");
+      this.bio = document.querySelector("#bio");
 
-      console.log(username.value);
-
+      console.log(this.username.value);
+      const display = new DisplayToDom();
       const dbRef = ref(getDatabase());
-      get(child(dbRef, `users/userInfo/${username.value}`)).then((snapshot) => {
-        if (username.value == "" || password.value == "") {
-          new DisplayToDom().createErrorMsg();
-        } else if (password.value == snapshot.val().password) {
-          location.href = "html/home.html";
-        } else if (password.value != snapshot.val().password) {
-          new DisplayToDom().wrongPassword();
-        } else if (snapshot.exists()) {
-          console.log(snapshot.val(), "is a user");
-        } else if (username.value != snapshot.val().username) {
-          new DisplayToDom().doesntExist();
+      get(child(dbRef, `users/userInfo/${this.username.value}`)).then(
+        (snapshot) => {
+          if (this.username.value == "" || this.password.value == "") {
+            display.createErrorMsg();
+          } else if (this.password.value == snapshot.val().password) {
+            location.href = "html/home.html";
+          } else if (this.password.value != snapshot.val().password) {
+            display.wrongUserOrPassword();
+          } else if (snapshot.exists()) {
+            console.log(snapshot.val(), "is a user");
+          }
+          sessionStorage.setItem("user", `${snapshot.val().username}`);
+          sessionStorage.setItem("gender", `${snapshot.val().gender}`);
+          sessionStorage.setItem("bio", `${snapshot.val().bio}`);
         }
-        sessionStorage.setItem("user", `${snapshot.val().username}`);
-        sessionStorage.setItem("gender", `${snapshot.val().gender}`);
-        sessionStorage.setItem("bio", `${snapshot.val().bio}`);
-      });
+      );
     });
   }
 }

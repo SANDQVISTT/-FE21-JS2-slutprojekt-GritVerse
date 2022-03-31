@@ -12,13 +12,13 @@ export class DisplayToDom {
     inputError.innerText = "Please fill in every input...";
   }
 
-  public wrongPassword(): void {
+  public wrongUserOrPassword(): void {
     const wrongPw: HTMLElement = document.getElementById("gritverse-title");
     wrongPw.innerText = "Wrong username or password, try again...";
   }
   public doesntExist(): void {
     const noUser: HTMLElement = document.getElementById("gritverse-title");
-    noUser.innerText = "Wrong username or password.";
+    noUser.innerText = "User doesn't exist.";
   }
 
   public hideAndShowLoginPage(): void {
@@ -83,18 +83,4 @@ export class DisplayToDom {
       });
     });
   }
-
-  public registerPage(): void {}
-  //   public div: HTMLDivElement;
-  //   public createElements(): void {
-  //     this.div = document.createElement("div");
-  //     this.div.setAttribute("id", "main");
-  //     document.body.append(this.div);
-
-  //     const h1: HTMLHeadElement = document.createElement("h1");
-  //     h1.setAttribute("id", "title");
-  //     this.div.appendChild(h1);
-  //     h1.innerText = "Hello! Typescript is working!";
-  //     h1.style.textAlign = "center";
-  //   }
 }
