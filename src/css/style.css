@@ -52,6 +52,9 @@ input {
 }
 textarea {
   background-color: #c7c7c7;
+  resize: none;
+  width: 229px;
+  height: 142px;
 }
 button {
   border-radius: 15px;
