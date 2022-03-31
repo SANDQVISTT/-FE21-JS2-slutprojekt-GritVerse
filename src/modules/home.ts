@@ -1,5 +1,5 @@
 import { getDatabase, ref,child,get } from "firebase/database";
-import { db } from "./firebaseApp";
+import { db, UserSign } from "./firebaseApp";
 
 
 
@@ -22,12 +22,15 @@ get(GameRef).then((snapshot) => {
 get(MusicRef).then((snapshot) => {
     console.log(snapshot.val());
 
-    const messages = Object.values(snapshot.val());
-    console.log(messages[messages.length-1].message);
+    //const messages = Object.values(snapshot.val());
+    const user = Object.values(snapshot.val());
+    //console.log(messages[messages.length-1].message);
+    console.log(user[name.length-1].name);
 
     
     const musicTopic:HTMLElement = document.querySelector('#musicMessage')
-    musicTopic.innerText = messages[messages.length-1].message;
+    musicTopic.innerText = user[name.length-1].name;
+    //musicTopic.innerText = messages[messages.length-1].message;
     
 })
 get(ShowRef).then((snapshot) => {
