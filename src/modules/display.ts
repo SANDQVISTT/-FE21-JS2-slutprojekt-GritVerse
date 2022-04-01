@@ -7,7 +7,7 @@ export class DisplayToDom {
     const registerBtn: HTMLElement = document.querySelector("#register-user");
     registerBtn.style.display = "none";
   }
-  public createErrorMsg(): void {
+  public fillInEveryBlock(): void {
     const inputError: HTMLElement = document.getElementById("gritverse-title");
     inputError.innerText = "Please fill in every input...";
   }
@@ -19,6 +19,12 @@ export class DisplayToDom {
   public doesntExist(): void {
     const noUser: HTMLElement = document.getElementById("gritverse-title");
     noUser.innerText = "User doesn't exist.";
+  }
+  public alreadyUser(): void {
+    const alreadyAnUser: HTMLElement =
+      document.getElementById("gritverse-title");
+    alreadyAnUser.innerText =
+      "This username is already taken. Try another one.";
   }
 
   public hideAndShowLoginPage(): void {

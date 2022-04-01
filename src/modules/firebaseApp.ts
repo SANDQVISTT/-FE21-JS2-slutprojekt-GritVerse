@@ -17,6 +17,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 const dbRef = ref(db, "/users/userInfo/");
+const display = new DisplayToDom();
 export class UserSign {
   public username: HTMLInputElement;
   public password: HTMLInputElement;
@@ -44,7 +45,7 @@ export class UserSign {
           this.password.value === "" ||
           bio.value === ""
         ) {
-          alert("write every block kiddo");
+          display.fillInEveryBlock();
         } else {
           console.log("GENDER: ", document.querySelector("#gender"));
           const addUser = {
@@ -60,7 +61,7 @@ export class UserSign {
           get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
             console.log(snapshot.val(), snapshot.exists());
             if (snapshot.exists()) {
-              alert("this username already exists");
+              display.alreadyUser();
             } else {
               if (
                 newUsername != "" &&
@@ -89,18 +90,19 @@ export class UserSign {
       this.bio = document.querySelector("#bio");
 
       console.log(this.username.value);
-      const display = new DisplayToDom();
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/userInfo/${this.username.value}`)).then(
         (snapshot) => {
           if (this.username.value == "" || this.password.value == "") {
-            display.createErrorMsg();
-          } else if (this.password.value == snapshot.val().password) {
-            location.href = "html/home.html";
+            display.fillInEveryBlock();
           } else if (this.password.value != snapshot.val().password) {
             display.wrongUserOrPassword();
-          } else if (snapshot.exists()) {
-            console.log(snapshot.val(), "is a user");
+          } else if (this.password.value != snapshot.val().password) {
+            display.wrongUserOrPassword();
+          } else if (this.password.value == snapshot.val().password) {
+            location.href = "html/home.html";
+          } else {
+            console.log("wrong user or pw");
           }
           sessionStorage.setItem("user", `${snapshot.val().username}`);
           sessionStorage.setItem("gender", `${snapshot.val().gender}`);
