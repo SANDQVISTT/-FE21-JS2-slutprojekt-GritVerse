@@ -30,5 +30,4 @@ namn.innerText = usernameID;
 document.getElementById("logout-button").addEventListener("click", ()=>
 {
    sessionStorage.clear();
-   console.log(sessionStorage.getItem("user"));
 });

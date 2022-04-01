@@ -116,5 +116,4 @@ function scrollDown(): void {
 }
 document.getElementById("logout-button").addEventListener("click", () => {
   sessionStorage.clear();
-  console.log(sessionStorage.getItem("user"));
 });
