@@ -26,6 +26,7 @@ gender.innerText = genderID;
 namn.innerText = usernameID;
 
 //#region targetProfile
+//Own script or is this fine
 //TODO: get the profile from the link - sessionStorage
 //TODO: update profile data from database
 const search = document.getElementById("search") as HTMLInputElement;
