@@ -102,14 +102,12 @@ document.getElementById("send").addEventListener("click", (e) => {
     name: sessionStorage.getItem("user"),
     message: message.value,
   };
-
   const newKey: string = push(dbRef).key;
   const newMessage = {};
   newMessage[newKey] = messageToAdd;
 
   update(dbRef, newMessage);
 });
-
 function scrollDown(): void {
   const e = document.getElementById("messagesMusic");
   e.scrollTop = e.scrollHeight;
