@@ -27,8 +27,10 @@ bio.innerText = bioID;
 gender.innerText = genderID;
 namn.innerText = usernameID;
 
+//#region targetProfile
+//TODO: get the profile from the link - sessionstorage
+//TODO: update profile data from database
+const search = document.getElementById("search") as HTMLInputElement;
+const searchResult = document.getElementById("searchResult") as HTMLElement;
 
-
-
-
-
+//#endregion targetProfile
