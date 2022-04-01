@@ -1,19 +1,25 @@
 #Topics{
+    float:right;
     border:solid hotpink 1rem;
-    height: 100%;
     width: 15rem;
     text-align: center;
+    margin:1rem;
+    padding: 2rem;
     
    
 }
 /* varje Topic har sin div. går att flytta dom hur som helst inom huvud-diven #Topics */
 #gameTopic{
-    margin: 4rem;
+    margin: 1rem;
 }
 #musicTopic{
-    margin: 4rem;
+    margin: 1rem;
     
 }
 #showTopic{
-    margin: 4rem;
+    padding: 1rem;
+
+
+    
+    
 }
