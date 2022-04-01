@@ -42,7 +42,6 @@ export class Messages
       if (userName == sessionStorage.getItem("user"))
       {
         //Set the reference in the database
-        //TODO: change topics later
         const msgRef = ref(db, "/Topics/Shows/" + this.id);
         remove(msgRef);
       }
