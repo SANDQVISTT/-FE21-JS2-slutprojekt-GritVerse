@@ -46,3 +46,8 @@ get(ShowRef).then((snapshot) => {
 })
 
 
+document.getElementById("logout-button").addEventListener("click", ()=>
+{
+    sessionStorage.clear();
+    console.log(sessionStorage.getItem("user"));
+});

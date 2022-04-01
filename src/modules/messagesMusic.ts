@@ -115,3 +115,8 @@ function scrollDown(): void {
   const e = document.getElementById("messagesMusic");
   e.scrollTop = e.scrollHeight;
 }
+document.getElementById("logout-button").addEventListener("click", ()=>
+{
+    sessionStorage.clear();
+    console.log(sessionStorage.getItem("user"));
+});
