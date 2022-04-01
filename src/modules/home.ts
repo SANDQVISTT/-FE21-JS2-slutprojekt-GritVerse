@@ -1,49 +1,33 @@
-import { getDatabase, ref,child,get } from "firebase/database";
-import { db, UserSign } from "./firebaseApp";
+import { ref, get } from "firebase/database";
+import { db } from "./firebaseApp";
 
-
-
-
- const GameRef = ref(db, '/Topics/Games/');
- const MusicRef = ref(db, '/Topics/Music/');
- const ShowRef = ref(db, '/Topics/Shows/');
+const GameRef = ref(db, '/Topics/Games/');
+const MusicRef = ref(db, '/Topics/Music/');
+const ShowRef = ref(db, '/Topics/Shows/');
 
 get(GameRef).then((snapshot) => {
     console.log(snapshot.val());
-
     const messages = Object.values(snapshot.val());
-    console.log(messages[messages.length-1].message);
-
-    
-    const gameTopic:HTMLElement = document.querySelector('#gameMessage')
-    gameTopic.innerText = messages[messages.length-1].message;
-    
+    const gameTopic: HTMLElement = document.querySelector('#gameMessage')
+    const gameTopicUsername: HTMLElement = document.querySelector('#gameTopicUsername')
+    gameTopic.innerText = messages[messages.length - 1].message;
+    gameTopicUsername.innerText = messages[messages.length - 1].name;
 })
 get(MusicRef).then((snapshot) => {
     console.log(snapshot.val());
-
-    //const messages = Object.values(snapshot.val());
-    const user = Object.values(snapshot.val());
-    //console.log(messages[messages.length-1].message);
-    console.log(user[name.length-1].name);
-
-    
-    const musicTopic:HTMLElement = document.querySelector('#musicMessage')
-    musicTopic.innerText = user[name.length-1].name;
-    //musicTopic.innerText = messages[messages.length-1].message;
-    
+    const messages = Object.values(snapshot.val());
+    const musicTopic: HTMLElement = document.querySelector('#musicMessage')
+    const musicTopicName: HTMLElement = document.querySelector('#MusicUsername')
+    musicTopicName.innerText = messages[messages.length - 1].name;
+    musicTopic.innerText = messages[messages.length - 1].message;
 })
 get(ShowRef).then((snapshot) => {
     console.log(snapshot.val());
-
     const messages = Object.values(snapshot.val());
-    console.log(messages[messages.length-1].message);
-
-    
-    const showsTopic:HTMLElement = document.querySelector('#showsMessage')
-    showsTopic.innerText = messages[messages.length-1].message;
-    
-})
+    const showsTopic: HTMLElement = document.querySelector('#showsMessage')
+    const ShowsUsername: HTMLElement = document.querySelector('#ShowsUsername')
+    ShowsUsername.innerText = messages[messages.length - 1].name;
+    showsTopic.innerText = messages[messages.length - 1].message;})
 
 
 document.getElementById("logout-button").addEventListener("click", ()=>
