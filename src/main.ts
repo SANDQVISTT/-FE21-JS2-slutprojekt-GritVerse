@@ -7,4 +7,3 @@ const display = new DisplayToDom();
 users.logIn();
 users.createUser();
 display.hideAndShowLoginPage();
-// users.logOut();
