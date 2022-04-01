@@ -30,3 +30,8 @@ get(ShowRef).then((snapshot) => {
     showsTopic.innerText = messages[messages.length - 1].message;})
 
 
+document.getElementById("logout-button").addEventListener("click", ()=>
+{
+    sessionStorage.clear();
+    console.log(sessionStorage.getItem("user"));
+});
