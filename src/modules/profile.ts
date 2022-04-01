@@ -18,8 +18,6 @@ let usernameID = sessionStorage.getItem("user");
 let genderID = sessionStorage.getItem("gender");
 let bioID = sessionStorage.getItem("bio");
 
-console.log(usernameID, genderID, bioID)
-
 const namn:HTMLElement = document.querySelector('#UsernameID')
 const gender: HTMLElement = document.querySelector('#genderID');
 const bio: HTMLElement = document.querySelector('#bioID');
@@ -28,9 +26,17 @@ gender.innerText = genderID;
 namn.innerText = usernameID;
 
 //#region targetProfile
-//TODO: get the profile from the link - sessionstorage
+//TODO: get the profile from the link - sessionStorage
 //TODO: update profile data from database
 const search = document.getElementById("search") as HTMLInputElement;
 const searchResult = document.getElementById("searchResult") as HTMLElement;
+
+// let targetUsernameID = sessionStorage.getItem("targetUser");
+// let targetGenderID = sessionStorage.getItem("targetUser");
+// let targetBioID = sessionStorage.getItem("targetUser");
+
+// bio.innerText = targetBioID;
+// gender.innerText = targetGenderID;
+// namn.innerText = targetUsernameID;
 
 //#endregion targetProfile
