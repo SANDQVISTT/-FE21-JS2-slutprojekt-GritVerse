@@ -72,8 +72,11 @@ export class UserSign {
                 const newUser = {};
                 newUser[newKey] = addUser;
                 update(dbRef, newUser);
+                sessionStorage.setItem("user", `${addUser.username}`);
+                sessionStorage.setItem("gender", `${addUser.gender}`);
+                sessionStorage.setItem("bio", `${addUser.bio}`);
+                location.href = "html/home.html";
               }
-              location.href = "html/home.html";
             }
           });
         }
@@ -93,20 +96,20 @@ export class UserSign {
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/userInfo/${this.username.value}`)).then(
         (snapshot) => {
-          if (this.username.value == "" || this.password.value == "") {
-            display.fillInEveryBlock();
-          } else if (this.password.value != snapshot.val().password) {
-            display.wrongUserOrPassword();
-          } else if (this.password.value != snapshot.val().password) {
-            display.wrongUserOrPassword();
-          } else if (this.password.value == snapshot.val().password) {
-            location.href = "html/home.html";
+          if (snapshot.exists()) {
+            if (this.username.value == "" || this.password.value == "") {
+              display.fillInEveryBlock();
+            } else if (this.password.value != snapshot.val().password) {
+              display.wrongUserOrPassword();
+            } else if (this.password.value == snapshot.val().password) {
+              location.href = "html/home.html";
+            }
+            sessionStorage.setItem("user", `${snapshot.val().username}`);
+            sessionStorage.setItem("gender", `${snapshot.val().gender}`);
+            sessionStorage.setItem("bio", `${snapshot.val().bio}`);
           } else {
-            console.log("wrong user or pw");
+            display.wrongUserOrPassword();
           }
-          sessionStorage.setItem("user", `${snapshot.val().username}`);
-          sessionStorage.setItem("gender", `${snapshot.val().gender}`);
-          sessionStorage.setItem("bio", `${snapshot.val().bio}`);
         }
       );
     });
