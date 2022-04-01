@@ -2,3 +2,8 @@ node_modules
 package-lock.json
 dist
 .parcel-cache
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+README.md
+.github/ISSUE_TEMPLATE
