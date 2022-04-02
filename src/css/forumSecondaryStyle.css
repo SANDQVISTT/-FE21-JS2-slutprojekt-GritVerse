@@ -1,28 +1,23 @@
-
-#topicWrapper
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+#topicWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-form
-{
-    display:flex;
-    flex-direction: column;
-    margin: 0.5rem 0rem;
-    justify-content: center;
-    align-items: center;
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0rem;
+  justify-content: center;
+  align-items: center;
 }
-form textarea
-{
-    resize: none;
-    box-shadow: 2px 2px 2px #8FA0A6;
+form textarea {
+  resize: none;
+  box-shadow: 2px 2px 2px #8fa0a6;
 }
-input
-{
-    box-shadow: 2px 2px 2px #8FA0A6;
+input {
+  box-shadow: 2px 2px 2px #8fa0a6;
 }
 
 #MusicTag {
@@ -31,7 +26,6 @@ input
   padding: 1.5rem, 0rem;
   margin: 1.5rem, 0rem;
   background-color: rgb(65, 65, 65);
-
 }
 #GamesTag {
   width: 25%;
@@ -41,91 +35,78 @@ input
   background-color: rgb(65, 65, 65);
 }
 
-#ShowsTag
-{
-    width: 25%;
-    height: 40%;
-    background-color: rgb(65, 65, 65);
-    padding: 1.5rem, 0rem;
-    margin: 1.5rem, 0rem;
+#ShowsTag {
+  width: 25%;
+  height: 40%;
+  background-color: rgb(65, 65, 65);
+  padding: 1.5rem, 0rem;
+  margin: 1.5rem, 0rem;
 }
-#musicDiv
-{
-    width: 15%;
-    height: 15%;
-    background-color: #333;
-    margin: 1.5rem 0rem;
-    padding: 1.5rem;
+#musicDiv {
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  margin: 1.5rem 0rem;
+  padding: 1.5rem;
 }
-#showsDiv
-{
-    width: 15%;
-    height: 15%;
-    background-color: #333;
-    margin: 1.5rem 0rem;
-    padding: 1.5rem;
+#showsDiv {
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  margin: 1.5rem 0rem;
+  padding: 1.5rem;
 }
-#gamesDiv
-{
-    width: 15%;
-    height: 15%;
-    background-color: #333;
-    margin: 1.5rem 0rem;
-    padding: 1.5rem;
+#gamesDiv {
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  margin: 1.5rem 0rem;
+  padding: 1.5rem;
 }
-a
-{
-    color: white;
-    text-decoration: none;
+a {
+  color: white;
+  text-decoration: none;
 }
 /* Remove Buttons */
-div button
-{
-    width: 1.75rem;
-    padding: 0.25rem 0.25rem;
-    height: 1.15rem;
+div button {
+  width: 1.75rem;
+  padding: 0.25rem 0.25rem;
+  height: 1.15rem;
 }
-.chat-styling
-{
-    display:flex;
-    background-color: #333;
-    color: white;
-    text-shadow: 0.8px 0.8px 0.8px #8FA0A6;
-    box-shadow: 4.4px 4.4px 4.4px #8FA0A6;
-    margin: 1.5rem;
-    padding: 1rem;
-    width: 25%;
-    border-radius: 15px;
+.chat-styling {
+  display: flex;
+  background-color: #333;
+  color: white;
+  text-shadow: 0.8px 0.8px 0.8px #8fa0a6;
+  box-shadow: 4.4px 4.4px 4.4px #8fa0a6;
+  margin: 1.5rem;
+  padding: 1rem;
+  width: 25%;
+  border-radius: 15px;
 }
-.chat-styling button
-{
-    margin-left: 2rem;
-    margin-right: 0;
+.chat-styling button {
+  margin-left: 2rem;
+  margin-right: 0;
 }
-button
-{
-    box-shadow: 2px 2px 2px #8FA0A6;
+button {
+  box-shadow: 2px 2px 2px #8fa0a6;
 }
-form
-{
-    background-color:#333;
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 2.2rem;
-    width: 100%;
-    height: 14rem;
-    padding-bottom: 1.5rem;
-    padding-top: 1.2rem;    
+form {
+  background-color: #333;
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 2.2rem;
+  width: 100%;
+  height: 14rem;
+  padding-bottom: 1.5rem;
+  padding-top: 1.2rem;
 }
-div #messageMusic
-{
-    overflow-y: scroll;
+div #messageMusic {
+  overflow-y: scroll;
 }
-div #messagesGames
-{
-    overflow-y: scroll;
+div #messagesGames {
+  overflow-y: scroll;
 }
-#messageShows
-{
-    overflow-y:scroll;
+#messageShows {
+  overflow-y: scroll;
 }

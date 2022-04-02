@@ -1,4 +1,5 @@
 export class DisplayToDom {
+  /* Different error messages that displays */
   public hideRegisterElements(): void {
     const dropdown: HTMLElement = document.querySelector("#gender-choice");
     dropdown.style.display = "none";
@@ -26,8 +27,10 @@ export class DisplayToDom {
     alreadyAnUser.innerText =
       "This username is already taken. Try another one.";
   }
-
+  /* ----------------------------------------------------------------- */
+  /* Shows and hides elements in login-page */
   public hideAndShowLoginPage(): void {
+    /* Shows signup-page */
     document.getElementById("register").addEventListener("click", (e) => {
       e.preventDefault();
       console.log("in hide login page");
@@ -37,6 +40,7 @@ export class DisplayToDom {
       const passwordTitle: HTMLElement =
         document.getElementById("password-title");
       const dropdown: HTMLElement = document.querySelector("#gender-choice");
+      const logo: HTMLElement = document.querySelector("#logo-60");
       const password: HTMLElement = document.getElementById("password");
       const login: HTMLElement = document.getElementById("login");
       const alreadyAccount: HTMLElement = document.getElementById("register");
@@ -45,15 +49,15 @@ export class DisplayToDom {
       const registerBtn: HTMLElement = document.querySelector("#register-user");
 
       registerBtn.style.display = "center";
-
-      /* const register = document.getElementById("register"); */
       loginTitle.style.display = "center";
       username.style.display = "center";
       password.style.display = "center";
+      logo.style.display = "none";
       login.style.display = "none";
       dropdown.style.display = "block";
       textarea.style.display = "block";
       loginTitle.innerText = "Choose a username";
+      passwordTitle.style.display = "initial";
       passwordTitle.innerText = "Choose password";
       passwordTitle.style.color = "white";
       bioText.innerText = "Write something about yourself:";
@@ -62,22 +66,17 @@ export class DisplayToDom {
       alreadyAccount.innerHTML =
         'Already have an account? <a id="return" href="">Click here</a>';
 
+      /* shows login-page */
       document.getElementById("return").addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const dropdown: HTMLElement = document.querySelector("#gender-choice");
-        const textarea: HTMLElement = document.querySelector("#user-bio");
-        const loginTitle: HTMLElement = document.getElementById("login-title");
-        const passwordTitle: HTMLElement =
-          document.getElementById("password-title");
-        const registerBtn: HTMLElement =
-          document.querySelector("#register-user");
-        const login: HTMLElement = document.querySelector("#login");
-        const alreadyAccount: HTMLElement = document.getElementById("register");
 
         dropdown.style.display = "none";
         textarea.style.display = "none";
         loginTitle.innerText = "Log in";
+        logo.style.display = "initial";
+        logo.style.top = "16rem";
+        logo.style.left = " 4rem";
         passwordTitle.style.display = "none";
         registerBtn.style.display = "none";
         login.style.display = "revert";

@@ -62,12 +62,10 @@ button {
   width: 200px;
   margin: 3px;
   box-shadow: 1px 1.4px 2px #8fa0a6;
-
 }
 header {
   padding: 2rem;
   text-align: center;
-
 }
 footer {
   background-color: rgb(51, 51, 51);
@@ -79,7 +77,7 @@ footer {
   bottom: 0;
   width: 100%;
   height: 2.5rem;
-}  
+}
 li a:hover {
   background-color: #111;
 }
@@ -104,4 +102,62 @@ li a:hover {
 }
 #login button {
   text-align: center;
+}
+
+@media screen and (max-width: 770px) {
+  #username {
+    width: 75%;
+  }
+  #password {
+    width: 75%;
+  }
+  #login {
+    width: 75%;
+  }
+  #register {
+    font-size: 75%;
+  }
+  #bio {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 1080px) {
+  #username {
+    width: 75%;
+  }
+  #password {
+    width: 75%;
+  }
+  #login {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 810px) {
+  #login-title{
+    font-size: 75%;
+  }
+  #username {
+    width: 75%;
+  }
+  #password-title{
+    font-size: 75%;
+  }
+  #password {
+    width: 75%;
+  }
+  #login {
+    width: 75%;
+  }
+  #register {
+    font-size: 75%;
+  }
+  #bio-title {
+    font-size: 75%;
+  }
+  #bio {
+    width: 75%;
+  }
+  #register-user-to-site {
+    width: 75%;
+  }
 }

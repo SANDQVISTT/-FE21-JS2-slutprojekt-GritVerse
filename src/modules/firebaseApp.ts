@@ -27,7 +27,7 @@ export class UserSign {
     this.username = username;
     this.password = password;
   }
-
+/* Checks if user exists in database, if not it creates new user and uses session storage and redirects user to her/his profile */
   public createUser(): void {
     document
       .getElementById("register-user-to-site")
@@ -75,14 +75,14 @@ export class UserSign {
                 sessionStorage.setItem("user", `${addUser.username}`);
                 sessionStorage.setItem("gender", `${addUser.gender}`);
                 sessionStorage.setItem("bio", `${addUser.bio}`);
-                location.href = "html/home.html";
+                window.location.href = "html/profile.html";
               }
             }
           });
         }
       });
   }
-
+/* Checks with database if user exits or not, if not it'll prompt error messages. If user exists and the password is true, it'll use session storage and redirect the user to the home page */
   public logIn(): void {
     document.getElementById("login").addEventListener("click", (e) => {
       e.preventDefault();
@@ -102,7 +102,7 @@ export class UserSign {
             } else if (this.password.value != snapshot.val().password) {
               display.wrongUserOrPassword();
             } else if (this.password.value == snapshot.val().password) {
-              location.href = "html/home.html";
+              window.location.href = "html/home.html";
             }
             sessionStorage.setItem("user", `${snapshot.val().username}`);
             sessionStorage.setItem("gender", `${snapshot.val().gender}`);

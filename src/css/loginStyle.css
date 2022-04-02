@@ -23,9 +23,15 @@
 #password {
   margin-bottom: 25px;
 }
-#logo-60
-{
+#logo-60 {
   position: relative;
   top: 16rem;
   left: 4rem;
+}
+@media screen and (max-width: 769px) {
+  #logo-60 {
+    display: none;  }
+  #form-title-container {
+    width: 50%;
+  }
 }

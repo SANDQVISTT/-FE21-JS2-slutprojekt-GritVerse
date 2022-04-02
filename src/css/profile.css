@@ -1,6 +1,4 @@
-
-#ProfileInfo
-{
+#ProfileInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,18 +6,14 @@
   text-align: center;
   justify-content: center;
 }
-#bioID{
-    margin-top: 5vh;
-    width: 16rem;
-    height: 10rem;
-    border: 1px solid black;
-    word-wrap: break-word;
-    
-  }
-  
-  
-
-#genderID{
+#bioID {
   margin-top: 5vh;
-  
+  width: 16rem;
+  height: 10rem;
+  border: 1px solid black;
+  word-wrap: break-word;
+}
+
+#genderID {
+  margin-top: 5vh;
 }
