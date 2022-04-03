@@ -28,6 +28,13 @@
   top: 16rem;
   left: 4rem;
 }
+#gender{
+  height: 50px;
+  background-color: #c7c7c7;
+  position: relative;
+  text-align: center;
+  text-align-last: center;
+}
 @media screen and (max-width: 769px) {
   #logo-60 {
     display: none;  }

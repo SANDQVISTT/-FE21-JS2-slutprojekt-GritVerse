@@ -8,8 +8,10 @@
 }
 #bioID {
   margin-top: 5vh;
-  width: 16rem;
-  height: 10rem;
+  width: 500px;
+  height: 250px;
+  padding: 20px;
+  overflow-y: scroll;
   border: 1px solid black;
   word-wrap: break-word;
 }

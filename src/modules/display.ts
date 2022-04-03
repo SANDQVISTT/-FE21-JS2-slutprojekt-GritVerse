@@ -36,12 +36,12 @@ export class DisplayToDom {
       console.log("in hide login page");
       const div: HTMLElement = document.getElementById("form-title-container");
       const loginTitle: HTMLElement = document.getElementById("login-title");
-      const username: HTMLElement = document.getElementById("username");
+      const username = document.getElementById("username") as HTMLInputElement;
       const passwordTitle: HTMLElement =
         document.getElementById("password-title");
       const dropdown: HTMLElement = document.querySelector("#gender-choice");
       const logo: HTMLElement = document.querySelector("#logo-60");
-      const password: HTMLElement = document.getElementById("password");
+      const password = document.getElementById("password") as HTMLInputElement;
       const login: HTMLElement = document.getElementById("login");
       const alreadyAccount: HTMLElement = document.getElementById("register");
       const textarea: HTMLElement = document.querySelector("#user-bio");
@@ -52,6 +52,8 @@ export class DisplayToDom {
       loginTitle.style.display = "center";
       username.style.display = "center";
       password.style.display = "center";
+      username.value = "";
+      password.value = "";
       logo.style.display = "none";
       login.style.display = "none";
       dropdown.style.display = "block";
@@ -74,6 +76,8 @@ export class DisplayToDom {
         dropdown.style.display = "none";
         textarea.style.display = "none";
         loginTitle.innerText = "Log in";
+        username.value = "";
+        password.value = "";
         logo.style.display = "initial";
         logo.style.top = "16rem";
         logo.style.left = " 4rem";
