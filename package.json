@@ -1,7 +1,7 @@
 {
   "name": "fe21-js2-slutprojekt-gritverse",
   "version": "1.0.0",
-  "description": "",
+  "description": "GritVerse is a project made by [edzone](https://github.com/edzonee), [J0kk3](https://github.com/J0kk3) and [Sandqvist](https://github.com/SANDQVISTT) and it's a school project given to us.",
   "scripts": {
     "dev": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html --dist-dir docs --public-url ./",
@@ -17,5 +17,10 @@
   },
   "dependencies": {
     "firebase": "^9.6.10"
+  },
+  "repository":
+  {
+    "type": "git",
+    "url": "git+https://github.com/SANDQVISTT/-FE21-JS2-slutprojekt-GritVerse.git"
   }
 }
