@@ -1,94 +1,71 @@
-@media screen and (max-width: 600px)
-{
-    nav ul
-    {
-        height: 4rem;
-    }
-    nav a
-    {
-        font-size: 20px;
-    }
-    #form-title-container
-    {
-        width:60%;
-    }
-    input
-    {
-        height: 40px;
-    }
-    button
-    {
-        height: 40px;
-    }
-    /* Chat Layout */
-    #messagesMusic
-    {
-        font-size: 9px;
-    }
+@media screen and (max-width: 600px) {
+  nav ul {
+    height: 4rem;
+  }
+  nav a {
+    font-size: 20px;
+  }
+  #form-title-container {
+    width: 60%;
+  }
+  input {
+    height: 40px;
+  }
+  button {
+    height: 40px;
+  }
+  /* Chat Layout */
+  #messagesMusic {
+    font-size: 9px;
+  }
 }
-@media screen and (max-width: 768px)
-{
-    nav ul
-    {
-        height: 3rem;
-    }
-    nav a
-    {
-        font-size: 16px;
-    }
-    #form-title-container
-    {
-        width:40%;
-    }
-    input
-    {
-        height: 30px;
-    }
-    button
-    {
-        height: 30px;
-    }
-    /* Chat Layout */
-    #messagesMusic
-    {
-        font-size: 11px;
-    }
+@media screen and (max-width: 768px) {
+  nav ul {
+    height: 3rem;
+  }
+  nav a {
+    font-size: 16px;
+  }
+  #form-title-container {
+    width: 70%;
+  }
+  input {
+    height: 30px;
+  }
+  button {
+    height: 30px;
+  }
+  /* Chat Layout */
+  #messagesMusic {
+    font-size: 11px;
+  }
 }
-@media screen and (min-width: 1080px)
-{
-    h2
-    {
-        font-size: 20px;
-        margin: 0.15rem 0rem;
-    }
-    #bio-title
-    {
-        margin-top: 1rem;
-        font-size: 16px;
-    }
-    nav ul
-    {
-        height: 3rem;
-    }
-    nav a
-    {
-        font-size: 14px;
-    }
-    #form-title-container
-    {
-        width:15%;
-    }
-    input
-    {
-        height: 25px;
-    }
-    button
-    {
-        height: 25px;
-    }
-    /* Chat Layout */
-    #messagesMusic
-    {
-        font-size: 11px;
-    }
+@media screen and (min-width: 1080px) {
+  h2 {
+    font-size: 20px;
+    margin: 0.15rem 0rem;
+  }
+  #bio-title {
+    margin-top: 1rem;
+    font-size: 16px;
+  }
+  nav ul {
+    height: 3rem;
+  }
+  nav a {
+    font-size: 14px;
+  }
+  #form-title-container {
+    width: 15%;
+  }
+  input {
+    height: 25px;
+  }
+  button {
+    height: 25px;
+  }
+  /* Chat Layout */
+  #messagesMusic {
+    font-size: 11px;
+  }
 }
