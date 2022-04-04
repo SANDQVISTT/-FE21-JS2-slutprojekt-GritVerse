@@ -47,7 +47,9 @@ export class DisplayToDom {
       const textarea: HTMLElement = document.querySelector("#user-bio");
       const bioText: HTMLElement = document.querySelector("#bio-title");
       const registerBtn: HTMLElement = document.querySelector("#register-user");
+      const profilepicture: HTMLElement = document.querySelector('#userIMG')
 
+      profilepicture.style.display = "block"
       registerBtn.style.display = "center";
       loginTitle.style.display = "center";
       username.style.display = "center";

@@ -23,6 +23,7 @@ export class UserSign {
   public password: HTMLInputElement;
   public gender: HTMLInputElement;
   public bio: HTMLInputElement;
+  public pic: HTMLInputElement;
   constructor(username?: HTMLInputElement, password?: HTMLInputElement) {
     this.username = username;
     this.password = password;
@@ -37,8 +38,20 @@ export class UserSign {
         this.username = document.querySelector("#username");
         this.password = document.querySelector("#password");
         const bio: HTMLInputElement = document.querySelector("#bio");
+        const radio: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form-radio');
+        let img: string;
+    
 
+        radio.forEach((key: HTMLInputElement): void => {
+       if (key.checked) {
+        img = key.value;
+       
+      }
+    }); 
+        
         const newUsername: string = this.username.value.toLowerCase();
+        const profilePic:string = img.valueOf();
+        console.log("få fram pic",profilePic)
 
         if (
           newUsername === "" ||
@@ -56,6 +69,8 @@ export class UserSign {
             gender: (document.querySelector("#gender") as HTMLInputElement)
               .value,
             bio: (document.querySelector("#bio") as HTMLInputElement).value,
+            profilePic: (document.querySelector('.form-radio') as HTMLInputElement).value
+
           };
 
           get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
@@ -66,7 +81,9 @@ export class UserSign {
               if (
                 newUsername != "" &&
                 this.password.value != "" &&
-                bio.value != ""
+                bio.value != "" &&
+                profilePic
+              
               ) {
                 const newKey: string = newUsername;
                 const newUser = {};
@@ -75,6 +92,7 @@ export class UserSign {
                 sessionStorage.setItem("user", `${addUser.username}`);
                 sessionStorage.setItem("gender", `${addUser.gender}`);
                 sessionStorage.setItem("bio", `${addUser.bio}`);
+                sessionStorage.setItem("pic",`${addUser.profilePic}`)
                 window.location.href = "html/profile.html";
               }
             }
