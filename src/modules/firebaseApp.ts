@@ -28,7 +28,7 @@ export class UserSign {
     this.username = username;
     this.password = password;
   }
-/* Checks if user exists in database, if not it creates new user and uses session storage and redirects user to her/his profile */
+  /* Checks if user exists in database, if not it creates new user and uses session storage and redirects user to her/his profile */
   public createUser(): void {
     document
       .getElementById("register-user-to-site")
@@ -38,20 +38,19 @@ export class UserSign {
         this.username = document.querySelector("#username");
         this.password = document.querySelector("#password");
         const bio: HTMLInputElement = document.querySelector("#bio");
-        const radio: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form-radio');
+        const radio: NodeListOf<HTMLInputElement> =
+          document.querySelectorAll(".form-radio");
         let img: string;
-    
 
         radio.forEach((key: HTMLInputElement): void => {
-       if (key.checked) {
-        img = key.value;
-       
-      }
-    }); 
-        
+          if (key.checked) {
+            img = key.value;
+          }
+        });
+
         const newUsername: string = this.username.value.toLowerCase();
-        const profilePic:string = img.valueOf();
-        console.log("få fram pic",profilePic)
+        const profilePic: string = img.valueOf();
+        console.log("få fram pic", profilePic);
 
         if (
           newUsername === "" ||
@@ -69,8 +68,9 @@ export class UserSign {
             gender: (document.querySelector("#gender") as HTMLInputElement)
               .value,
             bio: (document.querySelector("#bio") as HTMLInputElement).value,
-            profilePic: (document.querySelector('.form-radio') as HTMLInputElement).value
-
+            profilePic: (
+              document.querySelector(".form-radio") as HTMLInputElement
+            ).value,
           };
 
           get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
@@ -83,7 +83,6 @@ export class UserSign {
                 this.password.value != "" &&
                 bio.value != "" &&
                 profilePic
-              
               ) {
                 const newKey: string = newUsername;
                 const newUser = {};
@@ -92,7 +91,7 @@ export class UserSign {
                 sessionStorage.setItem("user", `${addUser.username}`);
                 sessionStorage.setItem("gender", `${addUser.gender}`);
                 sessionStorage.setItem("bio", `${addUser.bio}`);
-                sessionStorage.setItem("pic",`${addUser.profilePic}`)
+                sessionStorage.setItem("pic", `${addUser.profilePic}`);
                 window.location.href = "html/profile.html";
               }
             }
@@ -100,7 +99,7 @@ export class UserSign {
         }
       });
   }
-/* Checks with database if user exits or not, if not it'll prompt error messages. If user exists and the password is true, it'll use session storage and redirect the user to the home page */
+  /* Checks with database if user exits or not, if not it'll prompt error messages. If user exists and the password is true, it'll use session storage and redirect the user to the home page */
   public logIn(): void {
     document.getElementById("login").addEventListener("click", (e) => {
       e.preventDefault();

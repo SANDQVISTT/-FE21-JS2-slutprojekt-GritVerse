@@ -47,15 +47,16 @@ export class DisplayToDom {
       const textarea: HTMLElement = document.querySelector("#user-bio");
       const bioText: HTMLElement = document.querySelector("#bio-title");
       const registerBtn: HTMLElement = document.querySelector("#register-user");
-      const profilepicture: HTMLElement = document.querySelector('#userIMG')
+      const profilePicture: HTMLElement = document.querySelector("#userIMG");
 
-      profilepicture.style.display = "block"
+      profilePicture.style.display = "block";
       registerBtn.style.display = "center";
       loginTitle.style.display = "center";
       username.style.display = "center";
       password.style.display = "center";
       username.value = "";
       password.value = "";
+      div.style.height = "834px";
       logo.style.display = "none";
       login.style.display = "none";
       dropdown.style.display = "block";
@@ -87,6 +88,8 @@ export class DisplayToDom {
         registerBtn.style.display = "none";
         login.style.display = "revert";
         alreadyAccount.style.display = "center";
+        profilePicture.style.display = "none";
+        div.style.height = "500px";
         alreadyAccount.innerHTML =
           'No account? <a id="return" href="">Register here</a>';
 
