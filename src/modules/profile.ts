@@ -36,7 +36,7 @@ const searchResult = document.getElementById("searchResult") as HTMLElement;
 // let targetGenderID = sessionStorage.getItem("targetUser");
 // let targetBioID = sessionStorage.getItem("targetUser");
 
-bio.innerText = targetBioID;
+// bio.innerText = targetBioID;
 // gender.innerText = targetGenderID;
 // namn.innerText = targetUsernameID;
 
