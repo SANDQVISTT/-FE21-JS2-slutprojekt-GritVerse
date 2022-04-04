@@ -1,16 +1,19 @@
 import { ref, remove, update, onValue, push } from "firebase/database";
 import { db } from "./firebaseApp";
 
-export class Messages {
+export class Messages
+{
   constructor(
     public readonly id: string,
     public readonly userName: string,
     public readonly message: string,
     public readonly timeStamp: string
-  ) {
+  )
+  {
     this.displayMsg();
   }
-  private displayMsg(): void {
+  private displayMsg(): void
+  {
     //The section containing all messages (section for each topic?)
     const msgWrapper = document.getElementById("messagesGames");
     //The Div containing one message
@@ -30,60 +33,75 @@ export class Messages {
     //Create the remove button
     const removeBtn = document.createElement("button") as HTMLButtonElement;
     removeBtn.innerText = "X";
-    msgContainer.append(removeBtn);
+    if (this.userName == sessionStorage.getItem("user"))
+    {
+      msgContainer.append(removeBtn);
+    }
+
 
     //Removebuttons event
-    removeBtn.addEventListener("click", () => {
+    removeBtn.addEventListener("click", () =>
+    {
       const userName = sessionStorage.getItem("user");
 
-      if (userName == sessionStorage.getItem("user")) {
+      if (userName == sessionStorage.getItem("user"))
+      {
         //Set the reference in the database
         const msgRef = ref(db, "/Topics/Games/" + this.id);
         remove(msgRef);
       }
     });
   }
-  public clearDOM(): void {
+  public clearDOM(): void
+  {
     document.querySelector(`.${this.id}`).remove();
   }
 }
 const dbRef = ref(db, "/Topics/Games/");
 let messages: Messages[] = [];
-onValue(dbRef, (snapshot) => {
+onValue(dbRef, (snapshot) =>
+{
   const messageData = snapshot.val();
-  for (const message of messages) {
+  for (const message of messages)
+  {
     message.clearDOM();
   }
   messages = [];
-  for (const key in messageData) {
+  for (const key in messageData)
+  {
     messages.push(
       new Messages(
         key,
-        messageData[key].name,
-        messageData[key].message,
-        messageData[key].timeStamp
+        messageData[ key ].name,
+        messageData[ key ].message,
+        messageData[ key ].timeStamp
       )
     );
   }
   //Scroll to the bottom
   scrollDown();
   //Remove the 26th post
-  function postLimiter(): void {
+  function postLimiter(): void
+  {
     const messageArray = Object.values(messageData);
-    const index0 = Object.keys(messageData)[0];
-    for (let i = 0; i < messageArray.length; i++) {
-      if (messageArray.length > 25) {
+    const index0 = Object.keys(messageData)[ 0 ];
+    for (let i = 0; i < messageArray.length; i++)
+    {
+      if (messageArray.length > 25)
+      {
         //Set the reference in the database
         const post = ref(db, "/Topics/games/" + index0);
         remove(post);
       }
     }
   }
-  if (messageData) {
+  if (messageData)
+  {
     postLimiter();
   }
 });
-document.getElementById("send").addEventListener("click", (e) => {
+document.getElementById("send").addEventListener("click", (e) =>
+{
   e.preventDefault();
   const message = document.getElementById("userMessage") as HTMLInputElement;
   const date = new Date();
@@ -105,16 +123,18 @@ document.getElementById("send").addEventListener("click", (e) => {
 
   const newKey: string = push(dbRef).key;
   const newMessage = {};
-  newMessage[newKey] = messageToAdd;
+  newMessage[ newKey ] = messageToAdd;
 
   update(dbRef, newMessage);
 });
 
-function scrollDown(): void {
+function scrollDown(): void
+{
   const e = document.getElementById("messagesGames");
   e.scrollTop = e.scrollHeight;
 }
 
-document.getElementById("logout-button").addEventListener("click", () => {
+document.getElementById("logout-button").addEventListener("click", () =>
+{
   sessionStorage.clear();
 });
