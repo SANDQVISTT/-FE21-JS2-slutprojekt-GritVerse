@@ -33,7 +33,6 @@ export class Messages
     //Create the remove button
     const removeBtn = document.createElement("button") as HTMLButtonElement;
     removeBtn.innerText = "X";
-    // const userName = sessionStorage.getItem("user");
     if (this.userName == sessionStorage.getItem("user"))
     {
       msgContainer.append(removeBtn);
