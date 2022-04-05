@@ -35,7 +35,10 @@ export class UserSign {
       .addEventListener("click", (e) => {
         e.preventDefault;
 
-        console.log('select radio element', document.querySelector(`input[type='radio']:checked`));
+        console.log(
+          "select radio element",
+          document.querySelector(`input[type='radio']:checked`)
+        );
 
         this.username = document.querySelector("#username");
         this.password = document.querySelector("#password");
@@ -46,13 +49,11 @@ export class UserSign {
         radio.forEach((key: HTMLInputElement): void => {
           if (key.checked) {
             img = key.value;
-            
           }
         });
 
         const newUsername: string = this.username.value.toLowerCase();
         let profilePic: string = img;
-        
 
         if (
           newUsername === "" ||
@@ -62,7 +63,10 @@ export class UserSign {
           display.fillInEveryBlock();
         } else {
           console.log("GENDER: ", document.querySelector("#gender"));
-          console.log("PIC: ", (document.querySelector(".form-radio") as HTMLInputElement).value);
+          console.log(
+            "PIC: ",
+            (document.querySelector(".form-radio") as HTMLInputElement).value
+          );
           const addUser = {
             username: (document.querySelector("#username") as HTMLInputElement)
               .value,
@@ -71,8 +75,7 @@ export class UserSign {
             gender: (document.querySelector("#gender") as HTMLInputElement)
               .value,
             bio: (document.querySelector("#bio") as HTMLInputElement).value,
-            profilePic: img
-              
+            profilePic: img,
           };
 
           get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
@@ -126,6 +129,7 @@ export class UserSign {
             sessionStorage.setItem("user", `${snapshot.val().username}`);
             sessionStorage.setItem("gender", `${snapshot.val().gender}`);
             sessionStorage.setItem("bio", `${snapshot.val().bio}`);
+            sessionStorage.setItem("pic", `${snapshot.val().profileic}`)
           } else {
             display.wrongUserOrPassword();
           }
