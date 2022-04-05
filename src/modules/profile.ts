@@ -1,6 +1,7 @@
 import { db } from "./firebaseApp";
 import { onValue, ref, get } from "firebase/database";
 import { logOut } from "./logout";
+import { deleteProfile } from "./deleteUser";
 
 let usernameID = sessionStorage.getItem("user");
 let genderID = sessionStorage.getItem("gender");
@@ -21,4 +22,5 @@ bio.innerText = bioID;
 gender.innerText = genderID;
 namn.innerText = usernameID;
 
+deleteProfile();
 logOut();
