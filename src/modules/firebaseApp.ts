@@ -129,7 +129,7 @@ export class UserSign {
             sessionStorage.setItem("user", `${snapshot.val().username}`);
             sessionStorage.setItem("gender", `${snapshot.val().gender}`);
             sessionStorage.setItem("bio", `${snapshot.val().bio}`);
-            sessionStorage.setItem("pic", `${snapshot.val().profileic}`)
+            sessionStorage.setItem("pic", `${snapshot.val().profilePic}`)
           } else {
             display.wrongUserOrPassword();
           }
