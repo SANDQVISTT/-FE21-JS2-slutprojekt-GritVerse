@@ -35,22 +35,24 @@ export class UserSign {
       .addEventListener("click", (e) => {
         e.preventDefault;
 
+        console.log('select radio element', document.querySelector(`input[type='radio']:checked`));
+
         this.username = document.querySelector("#username");
         this.password = document.querySelector("#password");
         const bio: HTMLInputElement = document.querySelector("#bio");
         const radio: NodeListOf<HTMLInputElement> =
           document.querySelectorAll(".form-radio");
         let img: string;
-
         radio.forEach((key: HTMLInputElement): void => {
           if (key.checked) {
             img = key.value;
+            
           }
         });
 
         const newUsername: string = this.username.value.toLowerCase();
-        const profilePic: string = img.valueOf();
-        console.log("få fram pic", profilePic);
+        let profilePic: string = img;
+        
 
         if (
           newUsername === "" ||
@@ -60,6 +62,7 @@ export class UserSign {
           display.fillInEveryBlock();
         } else {
           console.log("GENDER: ", document.querySelector("#gender"));
+          console.log("PIC: ", (document.querySelector(".form-radio") as HTMLInputElement).value);
           const addUser = {
             username: (document.querySelector("#username") as HTMLInputElement)
               .value,
@@ -68,9 +71,8 @@ export class UserSign {
             gender: (document.querySelector("#gender") as HTMLInputElement)
               .value,
             bio: (document.querySelector("#bio") as HTMLInputElement).value,
-            profilePic: (
-              document.querySelector(".form-radio") as HTMLInputElement
-            ).value,
+            profilePic: img
+              
           };
 
           get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
