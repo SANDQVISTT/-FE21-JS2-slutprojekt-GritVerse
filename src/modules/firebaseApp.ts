@@ -35,11 +35,6 @@ export class UserSign {
       .addEventListener("click", (e) => {
         e.preventDefault;
 
-        console.log(
-          "select radio element",
-          document.querySelector(`input[type='radio']:checked`)
-        );
-
         this.username = document.querySelector("#username");
         this.password = document.querySelector("#password");
         const bio: HTMLInputElement = document.querySelector("#bio");
@@ -54,7 +49,7 @@ export class UserSign {
 
         const newUsername: string = this.username.value.toLowerCase();
         let profilePic: string = img;
-
+        /* Checks if any input is empty, if so it gives error message. Else it creates new user */
         if (
           newUsername === "" ||
           this.password.value === "" ||
@@ -62,11 +57,6 @@ export class UserSign {
         ) {
           display.fillInEveryBlock();
         } else {
-          console.log("GENDER: ", document.querySelector("#gender"));
-          console.log(
-            "PIC: ",
-            (document.querySelector(".form-radio") as HTMLInputElement).value
-          );
           const addUser = {
             username: (document.querySelector("#username") as HTMLInputElement)
               .value,
@@ -77,9 +67,8 @@ export class UserSign {
             bio: (document.querySelector("#bio") as HTMLInputElement).value,
             profilePic: img,
           };
-
+          /* checks with database if user exists or not */
           get(child(dbRef, `/${newUsername}`)).then((snapshot) => {
-            console.log(snapshot.val(), snapshot.exists());
             if (snapshot.exists()) {
               display.alreadyUser();
             } else {
@@ -113,8 +102,7 @@ export class UserSign {
       this.password = document.querySelector("#password");
       this.gender = document.querySelector("#gender");
       this.bio = document.querySelector("#bio");
-
-      console.log(this.username.value);
+      /* checks with database incase everything matches or not */
       const dbRef = ref(getDatabase());
       get(child(dbRef, `users/userInfo/${this.username.value}`)).then(
         (snapshot) => {

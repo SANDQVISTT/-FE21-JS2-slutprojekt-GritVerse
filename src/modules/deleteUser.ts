@@ -3,20 +3,19 @@ import { db } from "./firebaseApp";
 
 /* Function for deleting your own profile */
 export function deleteProfile(): void {
-  const profileDIV = document.getElementById("ProfileInfo") as HTMLInputElement;
   const deleteProfileBtn = document.getElementById(
     "delete-account"
   ) as HTMLButtonElement;
   deleteProfileBtn.style.display = "none";
-  
+
   /* temporary solution */
   let usernameID = sessionStorage.getItem("user");
   let target = sessionStorage.getItem("targetUser");
   let currentUser = target === null ? usernameID : target;
-
+  /* checks if current user is logged in or not */
   if (sessionStorage.getItem("user") == currentUser) {
     deleteProfileBtn.style.display = "block";
-    console.log(sessionStorage.getItem("user"));
+
     deleteProfileBtn.addEventListener("click", (e) => {
       let deleteAccountBtn = confirm("Are you sure?");
       if (deleteAccountBtn) {

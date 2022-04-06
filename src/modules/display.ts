@@ -33,7 +33,6 @@ export class DisplayToDom {
     /* Shows signup-page */
     document.getElementById("register").addEventListener("click", (e) => {
       e.preventDefault();
-      console.log("in hide login page");
       const div: HTMLElement = document.getElementById("form-title-container");
       const loginTitle: HTMLElement = document.getElementById("login-title");
       const username = document.getElementById("username") as HTMLInputElement;
@@ -92,8 +91,6 @@ export class DisplayToDom {
         div.style.height = "500px";
         alreadyAccount.innerHTML =
           'No account? <a id="return" href="">Register here</a>';
-
-        console.log("in return");
       });
     });
   }
