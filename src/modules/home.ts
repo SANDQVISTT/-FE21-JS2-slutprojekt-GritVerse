@@ -48,7 +48,7 @@ get(profilRef).then((snapshot) => {
     //när du tryckt på ett namn så kommer du in i deras profil
     usernames.addEventListener("click", function (e) {
       sessionStorage.setItem("targetUser", usernames.textContent);
-      window.location.href = "profile.html";
+      window.location.href = "./profile.html";
     });
   }
 });
