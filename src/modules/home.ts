@@ -5,6 +5,7 @@ import { logOut } from "./logout";
 const GameRef = ref(db, "/Topics/Games/");
 const MusicRef = ref(db, "/Topics/Music/");
 const ShowRef = ref(db, "/Topics/Shows/");
+const profilRef = ref(db, "/users/userInfo");
 
 get(GameRef).then((snapshot) => {
   console.log(snapshot.val());
@@ -32,22 +33,19 @@ get(ShowRef).then((snapshot) => {
   showsTopic.innerText = messages[messages.length - 1].message;
 });
 
-const profilRef = ref(db, "/users/userInfo");
+
 get(profilRef).then((snapshot) => {
   console.log(snapshot.val());
   const users = Object.keys(snapshot.val());
-  //const user: HTMLElement = document.querySelector("#showUsersP");
-  console.log(users);
-  // user.innerText = users[users.length-1].username ;
+//hämtar Arr av alla användare sen loopar vi ut dom på Home.html
   for (const user of users) {
-    console.log(user);
     const usersDIV: HTMLDivElement = document.createElement("div");
     document.body.append(usersDIV);
     let usernames: HTMLParagraphElement = document.createElement("p");
     usernames.innerText = user;
-
     usersDIV.appendChild(usernames);
-
+    //gör ett klickEvent som tar namnet man trycker på och sätter in det i SessionStorage
+    //när du tryckt på ett namn så kommer du in i deras profil
     usernames.addEventListener("click", function (e) {
       sessionStorage.setItem("targetUser", usernames.textContent);
       window.location.href = "./profile.html";
