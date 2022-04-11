@@ -25,7 +25,7 @@ export function deleteProfile(): void {
         );
         sessionStorage.clear();
         remove(deleteUser);
-        window.location.href = "/index.html";
+        window.location.href = "./index.html";
       } else {
         deleteProfileBtn.style.display = "none";
       }
